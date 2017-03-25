@@ -30,4 +30,40 @@ public class ListaBarcos {
 		}
 		return esta;
 	}
+	public boolean existeBarco(int x,  int y){
+		Barco a;
+		boolean esta=false;
+		ArrayList<Integer> lis;
+		Iterator<Integer> iter;
+		Iterator<Barco> it=listaBarcos.iterator();
+		while(it.hasNext() || esta==true){
+			a=it.next();
+			lis=a.saberPosicion();
+			iter=lis.iterator();
+			if(iter.next()==x && iter.next()==y){
+				esta=true;
+			}
+		}
+		return esta;
+	}
+	public Barco buscarBarco(int x,  int y){
+		Barco a=null;
+		boolean esta=false;
+		ArrayList<Integer> lis;
+		Iterator<Integer> iter;
+		Iterator<Barco> it=listaBarcos.iterator();
+		while(it.hasNext() || esta==true){
+			a=it.next();
+			lis=a.saberPosicion();
+			iter=lis.iterator();
+			if(iter.next()==x && iter.next()==y){
+				esta=true;
+			}
+		}
+		return a;
+		
+	}
+	public void anadirBarco(Barco b){
+		listaBarcos.add(b);
+	}
 }
