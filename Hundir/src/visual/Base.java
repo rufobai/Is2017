@@ -2,6 +2,8 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -11,10 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Base extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel contentPane2;
 
 	/**
 	 * Launch the application.
@@ -42,8 +47,21 @@ public class Base extends JFrame {
 		contentPane = new JPanel();
 		
 		JButton btnJugar = new JButton("Jugar");
+		btnJugar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				System.out.println("CLICK");
+				generarJuego();
+			}
+		});
 		JButton btnAyuda = new JButton("Ayuda");		
 		JButton btnAcercaDe = new JButton("Acerca de...");
+		btnAcercaDe.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				System.out.println("Acerca de...");
+			}
+		});
 		GroupLayout groupLayout2 = new GroupLayout(contentPane);
 		groupLayout2.setHorizontalGroup(
 				groupLayout2.createParallelGroup(Alignment.LEADING)
@@ -67,15 +85,63 @@ public class Base extends JFrame {
 					.addContainerGap(121, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(groupLayout2);
-		//setContentPane(contentPane);
-		setContentPane(new PanelJuego());
+		setContentPane(contentPane);
+		//setContentPane(new PanelJuego());
 		//MENU DE JUEGO
+		
+		/*GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0};
+		gridBagLayout.rowHeights = new int[]{0};
+		gridBagLayout.columnWeights = new double[]{Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{Double.MIN_VALUE};
+		
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				JButton button = new JButton("?");
+				GridBagConstraints lugar = new GridBagConstraints();
+				System.out.println("Posicion: "+ i + " " + j);
+				lugar.gridx = i;
+				lugar.gridy = j;
+				getContentPane().add(button, lugar);
+			}
+		}*/
+		
+		//contentPane.setLayout(gridBagLayout);
+		
+		
+		
 		
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		//contentPane.setLayout(new BorderLayout(0, 0));
 		//contentPane.setVisible(true);
-		ImageIcon fondo = new ImageIcon("/estaticos/FondoPrueba.jpg");
+		//ImageIcon fondo = new ImageIcon("/estaticos/FondoPrueba.jpg");
 		
+	}
+	
+	private void generarJuego(){
+		
+		System.out.println("Generamos el panel de juego");
+		
+		contentPane2 = new JPanel();
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0};
+		gridBagLayout.rowHeights = new int[]{0};
+		gridBagLayout.columnWeights = new double[]{Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{Double.MIN_VALUE};
+		
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				JButton button = new JButton("?");
+				GridBagConstraints lugar = new GridBagConstraints();
+				System.out.println("Posicion: "+ i + " " + j);
+				lugar.gridx = i;
+				lugar.gridy = j;
+				contentPane2.add(button, lugar);
+			}
+		}
+		
+		contentPane2.setLayout(gridBagLayout);
+		setContentPane(contentPane2);
 	}
 
 }

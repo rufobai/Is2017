@@ -18,6 +18,12 @@ public class Menu extends JPanel {
 		System.out.println("Generamos un JPanel Menu");
 		
 		JButton btnJugar = new JButton("Jugar");
+		btnJugar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("CLICK");
+			}
+		});
 		JButton btnAyuda = new JButton("Ayuda");		
 		JButton btnAcercaDe = new JButton("Acerca de...");
 		GroupLayout groupLayout = new GroupLayout(this);
