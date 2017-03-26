@@ -6,6 +6,4 @@ public class HundirFlota {
 	
 	private ArrayList<Jugador> listaJugadores;
 	
-	
-
 }

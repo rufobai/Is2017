@@ -10,18 +10,23 @@ public class Barco {
 	private boolean escudo;
 	private String estado;
 	private int toques;
-	private ArrayList<ArrayList<Integer>> posicion;
+	private ArrayList<ArrayList<Integer>> posicion=new ArrayList<ArrayList<Integer>>();
 	
 	
-	public Barco(int length, int pos1, int pos2, int direccion){
+	public Barco(int length){
 		toques=0;
 		longitud = length;
 		escudo = false;
-		posicion=new ArrayList<ArrayList<Integer>>();
-		asignarEspacio(pos1, pos2, direccion);
+		
 		
 	}
-	private void asignarEspacio(int pos1, int pos2, int direccion){
+	public void darPosicion(ArrayList<ArrayList<Integer>> p){
+		posicion=p;
+	}
+	public void reparar(int x, int y){
+		
+	}
+	public void asignarEspacio(int pos1, int pos2, int direccion){
 		int p1=pos1;
 		int p2=pos2;
 		Iterator<ArrayList<Integer>> it=posicion.iterator();

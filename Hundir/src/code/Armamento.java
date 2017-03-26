@@ -13,46 +13,70 @@ public class Armamento {
 
 	public Armamento(){
 		radar=2;
-		bombas=1;
-		misiles=10;
+		bombas=105;
+		misiles=1;
 		misilAB=2;
 		misilNS=2;
 		misilOE=2;
 				
 	}
 
-	public int saberRadar(){
-		return radar;
+	public boolean saberRadar(){
+		if(radar!=0){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 	public void lanzarRadar(){
 		radar=radar-1;
 	}
-	public int saberBomba(){
-		return bombas;
-	}
+	public boolean saberBomba(){
+		if(bombas!=0){
+			return true;
+		}else{
+			return false;
+		}	}
 	public void lanzarBomba(){
 		bombas=bombas-1;
 	}
-	public int saberMisil(){
-		return misiles;
+	public boolean saberMisil(){
+		if(misiles!=0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public void lanzarMisil(){
 		misiles=misiles-1;
 	}
-	public int saberMisilNS(){
-		return misilNS;
+	public boolean saberMisilNS(){
+		if(misilNS!=0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public void lanzarMisilNS(){
 		misilNS=misilNS-1;
 	}
-	public int saberMisilAB(){
-		return misilAB;
+	public boolean saberMisilAB(){
+		if(misilAB!=0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public void lanzarMisilAB(){
 		misilAB=misilAB-1;
 	}
-	public int saberMisilOE(){
-		return misilOE;
+	public boolean saberMisilOE(){
+		if(misilOE!=0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public void lanzarMisilOE(){
 		misilOE=misilOE-1;
