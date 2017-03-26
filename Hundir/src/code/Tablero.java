@@ -19,7 +19,6 @@ public class Tablero {
 	
 		int a=10;
 		ArrayList<Integer> lis;
-		Iterator<Integer> iter;
 		Iterator<ArrayList<Integer>> it=tablero.iterator();
 		while(it.hasNext()){
 			lis=it.next();
@@ -31,5 +30,11 @@ public class Tablero {
 			
 		}
 		
+	}
+	public boolean haySitio(int cuantos, int direccion){
+		
+		
+		
+		return true;
 	}
 }

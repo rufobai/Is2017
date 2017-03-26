@@ -16,14 +16,10 @@ public class ListaBarcos {
 	public boolean activarEscudo( int x,  int y){
 		Barco a;
 		boolean esta=false;
-		ArrayList<Integer> lis;
-		Iterator<Integer> iter;
 		Iterator<Barco> it=listaBarcos.iterator();
 		while(it.hasNext() || esta==true){
 			a=it.next();
-			lis=a.saberPosicion();
-			iter=lis.iterator();
-			if(iter.next()==x && iter.next()==y){
+			if(a.esta(x, y)){
 				a.activarEscudo();
 				esta=true;
 			}
@@ -32,15 +28,11 @@ public class ListaBarcos {
 	}
 	public boolean existeBarco(int x,  int y){
 		Barco a;
-		boolean esta=false;
-		ArrayList<Integer> lis;
-		Iterator<Integer> iter;
+		boolean esta=false;		
 		Iterator<Barco> it=listaBarcos.iterator();
 		while(it.hasNext() || esta==true){
-			a=it.next();
-			lis=a.saberPosicion();
-			iter=lis.iterator();
-			if(iter.next()==x && iter.next()==y){
+			a=it.next();			
+			if(a.esta(x, y)){
 				esta=true;
 			}
 		}
@@ -48,20 +40,15 @@ public class ListaBarcos {
 	}
 	public Barco buscarBarco(int x,  int y){
 		Barco a=null;
-		boolean esta=false;
-		ArrayList<Integer> lis;
-		Iterator<Integer> iter;
+		boolean esta=false;		
 		Iterator<Barco> it=listaBarcos.iterator();
 		while(it.hasNext() || esta==true){
 			a=it.next();
-			lis=a.saberPosicion();
-			iter=lis.iterator();
-			if(iter.next()==x && iter.next()==y){
+			if(a.esta(x, y)){
 				esta=true;
 			}
 		}
-		return a;
-		
+		return a;		
 	}
 	public void anadirBarco(Barco b){
 		listaBarcos.add(b);
