@@ -31,9 +31,7 @@ public class Tablero {
 		}
 		
 	}
-	public boolean haySitio(int cuantos, int direccion){
-		
-		
+	public boolean haySitio(int cuantos, int direccion){		
 		
 		return true;
 	}

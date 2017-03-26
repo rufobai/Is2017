@@ -7,14 +7,12 @@ public class Jugador {
 
 	private ListaBarcos listaBarcos;
 	private Armamento armamentoJug;
-	private String nombre;
 	private boolean esOrdenador;
 	private Tablero t1;
 	private Tablero t2;
 	private double dinero;
 	
-	public Jugador(String n, boolean es){
-		nombre=n;
+	public Jugador(boolean es){
 		esOrdenador=es;
 		armamentoJug=new Armamento();
 		dinero=100;
@@ -56,14 +54,44 @@ public class Jugador {
 	int x=(int) (Math.random()*10+1);
 	int y=(int) (Math.random()*10+1);
 	int d=direccion();
-	while(t1.haySitio(barcos, d)!=true){
+	/*while(t1.haySitio(barcos, d)!=true){
 		d=direccion();
-	}
+	}*/
 	Barco b=new Barco(barcos);
 	b.asignarEspacio(x, y, d);
 
 
 	
+	}
+
+	public Integer getRadar() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getRadar();
+	}
+
+	public Integer getBomba() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getBombas();
+	}
+
+	public Integer getMisiles() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getMisiles();
+	}
+
+	public Integer getMisilNS() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getMisilNS();
+	}
+
+	public Integer getMisilOE() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getMisilOE();
+	}
+
+	public Integer getMisilAB() {
+		// TODO Auto-generated method stub
+		return armamentoJug.getMisilAB();
 	}
 
 

@@ -6,7 +6,7 @@ public class Armamento {
 	private int radar;
 	private int bombas;
 	private int misiles;
-	private int misilNS;
+	private int misilNS;	
 	private int misilOE;
 	private int misilAB;
 
@@ -21,6 +21,30 @@ public class Armamento {
 				
 	}
 
+	public int getRadar() {
+		return radar;
+	}
+
+	public int getBombas() {
+		return bombas;
+	}
+
+	public int getMisiles() {
+		return misiles;
+	}
+
+	public int getMisilNS() {
+		return misilNS;
+	}
+
+	public int getMisilOE() {
+		return misilOE;
+	}
+
+	public int getMisilAB() {
+		return misilAB;
+	}
+	
 	public boolean saberRadar(){
 		if(radar!=0){
 			return true;

@@ -1,6 +1,7 @@
 package code;
 
 import visual.Base;
+import visual.Juego;
 
 public class Ejecutor {
 
@@ -8,8 +9,10 @@ public class Ejecutor {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Inicio de Hundir");
-		Base base = new Base();
-		base.setVisible(true);
+		HundirFlota.getMiFlota().empezarPartida();
+		Juego juego = new Juego();
+		juego.setVisible(true);
+		
 
 	}
 
