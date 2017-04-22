@@ -129,6 +129,7 @@ public class Juego extends JFrame {
 		JLabel lblMuni = new JLabel("Munici\u00F3n");
 		
 		JButton btnPrueba = new JButton("Empezar");
+		btnPrueba.setVisible(false);
 		btnPrueba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -174,12 +175,14 @@ public class Juego extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
+				if(btnB.isEnabled()){	
 				if (tipoDisparo.equals("B")) {
 					tipoDisparo = "0";
 					btnB.setBackground(Color.gray);
 				}else if(tipoDisparo.equals("0")){
 					tipoDisparo = "B";
 					btnB.setBackground(Color.GREEN);
+				}
 				}
 				
 			}
@@ -189,13 +192,15 @@ public class Juego extends JFrame {
 		btnM.setBackground(Color.GRAY);
 		btnM.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {				
+			public void mouseClicked(MouseEvent e) {
+				if(btnM.isEnabled()){	
 				if (tipoDisparo.equals("M")) {
 					tipoDisparo = "0";
 					btnM.setBackground(Color.gray);
 				}else if(tipoDisparo.equals("0")){
 					tipoDisparo = "M";
 					btnM.setBackground(Color.GREEN);
+				}
 				}
 			}		
 			
@@ -209,13 +214,16 @@ public class Juego extends JFrame {
 		btnMns.setBackground(Color.GRAY);
 		btnMns.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {				
+			public void mouseClicked(MouseEvent e) {
+				if(btnMns.isEnabled()){	
 				if (tipoDisparo.equals("MNS")) {
 					tipoDisparo = "0";
 					btnMns.setBackground(Color.gray);
 				}else if(tipoDisparo.equals("0")){
 					tipoDisparo = "MNS";
+					System.out.println("Disparo cambiado a: " + tipoDisparo);
 					btnMns.setBackground(Color.GREEN);
+				}
 				}
 			}
 		});
@@ -229,6 +237,7 @@ public class Juego extends JFrame {
 		 btnMoe.addMouseListener(new MouseAdapter() {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
+		 		if(btnMoe.isEnabled()){		 	
 		 		if (tipoDisparo.equals("MOE")) {
 					tipoDisparo = "0";
 					btnMoe.setBackground(Color.gray);
@@ -237,6 +246,7 @@ public class Juego extends JFrame {
 					btnMoe.setBackground(Color.GREEN);
 				}
 		 	}
+		 	}
 		 });
 		
 		 btnMt = new JButton("MT");
@@ -244,6 +254,7 @@ public class Juego extends JFrame {
 		 btnMt.addMouseListener(new MouseAdapter() {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
+		 		if(btnMt.isEnabled()){	
 		 		if (tipoDisparo.equals("MT")) {
 					tipoDisparo = "0";
 					btnMt.setBackground(Color.gray);
@@ -251,6 +262,7 @@ public class Juego extends JFrame {
 					tipoDisparo = "Mt";
 					btnMt.setBackground(Color.GREEN);
 				}
+		 		}
 		 	}
 		 });
 		
@@ -423,6 +435,7 @@ public class Juego extends JFrame {
 							}
 							if(barcoToca.equals("Fin")){
 								lblSeleccioneLasPosiciones.setText("EMPIEZA EL JUEGO");
+								btnPrueba.setVisible(true);
 							}else{
 								lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);
 							}
@@ -431,6 +444,7 @@ public class Juego extends JFrame {
 							listaPos.add(lugar.gridy);
 							//resaltarPos(lugar.gridx, lugar.gridy);
 						}else if(radar){
+							if(btnR.isEnabled()){}
 							System.out.println("Llamada a radar 1");							
 							boolean hayBarcos = false;
 							hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar.gridx, lugar.gridy);
@@ -438,6 +452,14 @@ public class Juego extends JFrame {
 								System.out.println("Llamada a radar 2");
 								ArrayList<Integer> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar.gridx, lugar.gridy);
 								lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0) + ", " +barcosCerca.get(1));
+								 int restantes = Integer.parseInt(labelRN.getText());
+								restantes = restantes - 1;
+								labelTN.setText(""+restantes);
+								if(restantes == 0){
+									btnR.setEnabled(false);
+									btnR.setBackground(Color.GRAY);
+									radar = false;
+								}
 							}							
 						}else{
 							System.out.println("DISPARO EN: X= "+ lugar.gridx + " Y= " + lugar.gridy + " De tipo: " + tipoDisparo );
@@ -445,12 +467,55 @@ public class Juego extends JFrame {
 							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar.gridx, lugar.gridy);
 							if(tipoDisparo.equals("MT")){
 								restantes = Integer.parseInt(labelTN.getText());
+								restantes = restantes - 1;
+								labelTN.setText(""+restantes);
+								if(restantes == 0){
+									btnMt.setEnabled(false);
+									btnMt.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
 								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
 							}else if(tipoDisparo.equals("MOE")){
-								restantes = Integer.parseInt(labelMOEN.getText());
+								restantes = Integer.parseInt(labelMOEN.getText());		
+								restantes = restantes - 1;
+								labelMOEN.setText(""+restantes);
+								if(restantes == 0){
+									btnMoe.setEnabled(false);
+									btnMoe.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+								
 								//PINTO TODAS LAS CASILLAS DE FILA
 							}else if(tipoDisparo.equals("MNS")){
+								System.out.println("Entra en MNS");
+								restantes = Integer.parseInt(labelMNSN.getText());		
+								restantes = restantes - 1;
+								System.out.println("Los restantes es= " + restantes);
+								labelMNSN.setText(""+restantes);
+								if(restantes == 0){
+									btnMns.setEnabled(false);
+									btnMns.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
 								//PINTO TODAS LAS CASILLAS DE COLUMNA
+							}else if(tipoDisparo.equals("M")){
+								restantes = Integer.parseInt(labelMN.getText());		
+								restantes = restantes - 1;
+								labelMN.setText(""+restantes);
+								if(restantes == 0){
+									btnM.setEnabled(false);
+									btnM.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+							}else if(tipoDisparo.equals("B")){
+								restantes = Integer.parseInt(labelBN.getText());		
+								restantes = restantes - 1;
+								labelBN.setText(""+restantes);
+								if(restantes == 0){
+									btnB.setEnabled(false);
+									btnB.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
 							}
 						}
 						
