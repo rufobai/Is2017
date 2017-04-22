@@ -53,5 +53,46 @@ public class HundirFlota {
 		
 		return arma;
 	}
+	public boolean hayBarcosJugador(int x, int y){
+		boolean hay=false;
+		if(listaJugadores.get(0).esOrdenador()== true){
+			hay=listaJugadores.get(1).hayBarcos(x, y);
+		}else{
+			hay=listaJugadores.get(0).hayBarcos(x, y);
+		}
+		return hay;
+	}
+	public boolean hayBarcosOrdenador(int x, int y){
+		
+		boolean hay=false;
+		if(listaJugadores.get(0).esOrdenador()!= true){
+			hay=listaJugadores.get(1).hayBarcos(x, y);
+		}else{
+			hay=listaJugadores.get(0).hayBarcos(x, y);
+		}
+		return hay;
+	}
+	
+	public ArrayList<Integer> radarJugador(int x, int y){
+		ArrayList<Integer> r=new ArrayList<Integer>();
+		if(listaJugadores.get(0).esOrdenador()== true){
+			r=listaJugadores.get(1).radar(x, y);
+		}else{
+			r=listaJugadores.get(0).radar(x, y);
+		}
+		
+		return r;
+	}
+	public ArrayList<Integer> radarOrdenador(int x, int y){
+		ArrayList<Integer> r=new ArrayList<Integer>();
+		if(listaJugadores.get(0).esOrdenador()!= true){
+			r=listaJugadores.get(1).radar(x, y);
+		}else{
+			r=listaJugadores.get(0).radar(x, y);
+		}
+		
+		return r;
+	}
+	
 	
 }

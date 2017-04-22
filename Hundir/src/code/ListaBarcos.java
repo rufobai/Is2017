@@ -50,6 +50,7 @@ public class ListaBarcos {
 		}
 		return a;		
 	}
+	
 	public void anadirBarco(Barco b){
 		listaBarcos.add(b);
 	}

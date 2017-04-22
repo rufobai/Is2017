@@ -21,6 +21,9 @@ public class Jugador {
 		}
 		
 	}
+	public boolean esOrdenador(){
+		return esOrdenador;
+	}
 	
 	public boolean activarEscudo(int x, int y){
 		return listaBarcos.activarEscudo(x, y);
@@ -93,10 +96,33 @@ public class Jugador {
 		// TODO Auto-generated method stub
 		return armamentoJug.getMisilAB();
 	}
-
-
-
-	        
+	public boolean hayBarcos(int x, int y){
+		boolean hay=false;
+		int x1=x-1;
+		int y1=y-1;
+		
+		while(x1!=x+1||hay){
+			while(y1!=y+1||hay){
+				hay=listaBarcos.existeBarco(x1, y1);
+				y1++;;
+			}
+			x1++;
+		}
+		return hay;
+	}
+	public ArrayList<Integer> radar(int x, int y){
+		ArrayList<Integer> r=new ArrayList<Integer>();
+		
+		boolean hay=false;
+		for(int x1=x-1; x1==x+1;x1++){
+			for(int y1=y-1;y1==y+1;y1++){
+				hay=listaBarcos.existeBarco(x1, y1);
+				r.add(x1);
+				r.add(y1);
+			}
+		}
+		return r;
+	}
 
 
 }

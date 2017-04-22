@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Tablero {
 
-	private ArrayList<ArrayList<Integer>> tablero;
+	private ArrayList<ArrayList<Casilla>> tablero;
 	private int ancho;
 	private int alto;
 	
@@ -18,12 +18,12 @@ public class Tablero {
 	public void inicializar(){
 	
 		int a=10;
-		ArrayList<Integer> lis;
-		Iterator<ArrayList<Integer>> it=tablero.iterator();
+		ArrayList<Casilla> lis;
+		Iterator<ArrayList<Casilla>> it=tablero.iterator();
 		while(it.hasNext()){
 			lis=it.next();
 			for (int i=0;i<ancho;i++){
-				lis.add(a);
+				lis.add(new Casilla());
 				a--;
 			}
 			a=10;			

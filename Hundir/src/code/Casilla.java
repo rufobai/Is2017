@@ -12,4 +12,7 @@ public class Casilla {
 	public void cambiarEstado(){
 		ocupada=true;
 	}
+	public boolean getEstado(){
+		return ocupada;
+	}
 }
