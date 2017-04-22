@@ -26,7 +26,7 @@ public class HundirFlota {
 		
 		System.out.println("Pendiente de asignar barcos");
 		
-		/*ArrayList<ArrayList<Integer>> listaTemp = new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> listaTemp = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> listaTemp2 = new ArrayList<Integer>();
 		listaTemp2.add(listaPos.get(0));
 		listaTemp2.add(listaPos.get(1));
@@ -34,8 +34,8 @@ public class HundirFlota {
 		listaTemp2.add(listaPos.get(0));
 		listaTemp2.add(listaPos.get(0));
 		
-		listaTemp.add(listaPos.get(0));
-		listaJugadores.get(0).anadirBarco(listaTemp, 4);*/
+		//listaTemp.add(listaPos.get(0));
+		listaJugadores.get(0).anadirBarco(listaTemp, 4);
 		
 	}
 
@@ -92,6 +92,14 @@ public class HundirFlota {
 		}
 		
 		return r;
+	}
+	
+	public void disparar(String tipo, int x, int y){
+		listaJugadores.get(0).disparar(tipo, x, y);
+	}
+	
+	public void disparaElOrdenador(String tipo, int x, int y){
+		
 	}
 	
 	

@@ -123,6 +123,10 @@ public class Jugador {
 		}
 		return r;
 	}
+	
+	public void disparar(String tipo, int x, int y){
+		
+	}
 
 
 }

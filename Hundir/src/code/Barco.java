@@ -54,7 +54,7 @@ public class Barco {
 				lis=it.next();
 				lis.add(p1);
 				lis.add(p2);
-				p2--;
+				p2=p2-1;
 			}
 		}else{
 			for(int x=1;x<=longitud;x++){
@@ -62,7 +62,7 @@ public class Barco {
 				lis=it.next();
 				lis.add(p1);
 				lis.add(p2);
-				p1--;
+				p1=p2-1;
 			}
 		}
 	}
@@ -98,6 +98,20 @@ public class Barco {
 			}
 		}
 		return esta;
+	}
+	
+	public ArrayList<Integer> devolverPosicion(){
+		ArrayList<Integer> lista=new ArrayList<Integer>();
+		
+	
+		ArrayList<Integer> lis;
+		Iterator<ArrayList<Integer>> it=posicion.iterator();
+		while(it.hasNext()){
+			lis=it.next();
+			lista.addAll(lis);
+			
+		}
+		return lista;
 	}
 
 }

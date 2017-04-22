@@ -24,7 +24,7 @@ public class Tablero {
 			lis=it.next();
 			for (int i=0;i<ancho;i++){
 				lis.add(new Casilla());
-				a--;
+				a=a-1;
 			}
 			a=10;			
 			
