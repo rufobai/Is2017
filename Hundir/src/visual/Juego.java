@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -48,6 +49,8 @@ public class Juego extends JFrame {
 	private JLabel labelMOEN ;	
 	private JLabel labelTN;	
 	private JLabel labelRN;
+	private boolean radar;
+	private String tipoDisparo;
 
 	/**
 	 * Launch the application.
@@ -72,6 +75,8 @@ public class Juego extends JFrame {
 		estado = "Inicio";
 		barcoToca = "Portaaviones";
 		barcosInsert = 20;
+		radar = false;
+		tipoDisparo = "B";
 		setTitle("Hundir la Flota");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 439, 768);
@@ -147,6 +152,7 @@ public class Juego extends JFrame {
 				//btnPrueba.setIcon(water);
 				//System.out.println("Cambio");
 				HundirFlota.getMiFlota().asignarBarcosJugador(listaPos);
+				estado = "Juego";
 			}
 		});
 		
@@ -163,24 +169,109 @@ public class Juego extends JFrame {
 		JLabel lblRadar = new JLabel("Radar");
 		
 		JButton btnB = new JButton("B");
+		btnB.setBackground(Color.GREEN);
+		btnB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				if (tipoDisparo.equals("B")) {
+					tipoDisparo = "0";
+					btnB.setBackground(Color.gray);
+				}else if(tipoDisparo.equals("0")){
+					tipoDisparo = "B";
+					btnB.setBackground(Color.GREEN);
+				}
+				
+			}
+		});
 		
 		JButton btnM = new JButton("M");
+		btnM.setBackground(Color.GRAY);
+		btnM.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {				
+				if (tipoDisparo.equals("M")) {
+					tipoDisparo = "0";
+					btnM.setBackground(Color.gray);
+				}else if(tipoDisparo.equals("0")){
+					tipoDisparo = "M";
+					btnM.setBackground(Color.GREEN);
+				}
+			}		
+			
+		});
 		btnM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		
 		JButton btnMns = new JButton("MNS");
+		btnMns.setBackground(Color.GRAY);
+		btnMns.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {				
+				if (tipoDisparo.equals("MNS")) {
+					tipoDisparo = "0";
+					btnMns.setBackground(Color.gray);
+				}else if(tipoDisparo.equals("0")){
+					tipoDisparo = "MNS";
+					btnMns.setBackground(Color.GREEN);
+				}
+			}
+		});
 		btnMns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		 btnMoe = new JButton("MOE");
+		 btnMoe.setBackground(Color.GRAY);
+		 btnMoe.addMouseListener(new MouseAdapter() {
+		 	@Override
+		 	public void mouseClicked(MouseEvent e) {
+		 		if (tipoDisparo.equals("MOE")) {
+					tipoDisparo = "0";
+					btnMoe.setBackground(Color.gray);
+				}else if(tipoDisparo.equals("0")){
+					tipoDisparo = "MOE";
+					btnMoe.setBackground(Color.GREEN);
+				}
+		 	}
+		 });
 		
 		 btnMt = new JButton("MT");
+		 btnMt.setBackground(Color.GRAY);
+		 btnMt.addMouseListener(new MouseAdapter() {
+		 	@Override
+		 	public void mouseClicked(MouseEvent e) {
+		 		if (tipoDisparo.equals("MT")) {
+					tipoDisparo = "0";
+					btnMt.setBackground(Color.gray);
+				}else if(tipoDisparo.equals("0")){
+					tipoDisparo = "Mt";
+					btnMt.setBackground(Color.GREEN);
+				}
+		 	}
+		 });
 		
 		 btnR = new JButton("R");
+		 btnR.setBackground(Color.GRAY);
+		 btnR.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent arg0) {
+		 	}
+		 });
+		 btnR.addMouseListener(new MouseAdapter() {		 	
+
+			@Override
+		 	public void mouseClicked(MouseEvent arg0) {
+		 		radar = !radar;
+		 		if(radar){
+		 			btnR.setBackground(Color.GREEN);
+		 		}else{
+		 			btnR.setBackground(Color.GRAY);
+		 		}
+		 	}
+		 });
 		
 		 labelBN = new JLabel("0");
 		
@@ -331,7 +422,7 @@ public class Juego extends JFrame {
 								barcoToca = "Fin";
 							}
 							if(barcoToca.equals("Fin")){
-								lblSeleccioneLasPosiciones.setVisible(false);
+								lblSeleccioneLasPosiciones.setText("EMPIEZA EL JUEGO");
 							}else{
 								lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);
 							}
@@ -339,6 +430,28 @@ public class Juego extends JFrame {
 							listaPos.add(lugar.gridx);
 							listaPos.add(lugar.gridy);
 							//resaltarPos(lugar.gridx, lugar.gridy);
+						}else if(radar){
+							System.out.println("Llamada a radar 1");							
+							boolean hayBarcos = false;
+							hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar.gridx, lugar.gridy);
+							if(hayBarcos){
+								System.out.println("Llamada a radar 2");
+								ArrayList<Integer> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar.gridx, lugar.gridy);
+								lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0) + ", " +barcosCerca.get(1));
+							}							
+						}else{
+							System.out.println("DISPARO EN: X= "+ lugar.gridx + " Y= " + lugar.gridy + " De tipo: " + tipoDisparo );
+							int restantes = 0;
+							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar.gridx, lugar.gridy);
+							if(tipoDisparo.equals("MT")){
+								restantes = Integer.parseInt(labelTN.getText());
+								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
+							}else if(tipoDisparo.equals("MOE")){
+								restantes = Integer.parseInt(labelMOEN.getText());
+								//PINTO TODAS LAS CASILLAS DE FILA
+							}else if(tipoDisparo.equals("MNS")){
+								//PINTO TODAS LAS CASILLAS DE COLUMNA
+							}
 						}
 						
 						/*ImageIcon ns = new ImageIcon("water.png");
