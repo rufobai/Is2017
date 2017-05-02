@@ -11,13 +11,12 @@ public class Barco {
 	private String estado;
 	private int toques;
 	private ArrayList<ArrayList<Integer>> posicion=new ArrayList<ArrayList<Integer>>();
-	
+	private ArrayList<Casilla> pos;
 	
 	public Barco(int length){
 		toques=0;
 		longitud = length;
 		escudo = false;
-		
 		
 	}
 	public void darPosicion(ArrayList<ArrayList<Integer>> p){
@@ -26,46 +25,20 @@ public class Barco {
 	public void reparar(int x, int y){
 		
 	}
-	public void asignarEspacio(int pos1, int pos2, int direccion){
+	
+	public void darEspacio(int pos1, int pos2, int direccion){
 		int p1=pos1;
 		int p2=pos2;
-		Iterator<ArrayList<Integer>> it=posicion.iterator();
-		ArrayList<Integer> lis;
-		if(direccion==1){
-			for(int x=1;x<=longitud;x++){
-				posicion.add(new ArrayList<Integer>());
-				lis=it.next();
-				lis.add(p1);
-				lis.add(p2);
-				p2++;
-			}
-			
-		}else if(direccion==2){
-			for(int x=1;x<=longitud;x++){
-				posicion.add(new ArrayList<Integer>());
-				lis=it.next();
-				lis.add(p1);
-				lis.add(p2);
-				p1++;
-			}
-		}else if(direccion==3){
-			for(int x=1;x<=longitud;x++){
-				posicion.add(new ArrayList<Integer>());
-				lis=it.next();
-				lis.add(p1);
-				lis.add(p2);
-				p2=p2-1;
-			}
-		}else{
-			for(int x=1;x<=longitud;x++){
-				posicion.add(new ArrayList<Integer>());
-				lis=it.next();
-				lis.add(p1);
-				lis.add(p2);
-				p1=p2-1;
-			}
-		}
+		
+		ArrayList<Casilla> lis=new ArrayList<Casilla>();
+		Iterator<Casilla> it= lis.iterator();
 	}
+	
+	
+	
+	
+	
+	
 	public ArrayList<ArrayList<Integer>> saberPosicion(){
 		return posicion;
 	}

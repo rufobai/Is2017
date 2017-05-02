@@ -16,9 +16,12 @@ public class Jugador {
 		esOrdenador=es;
 		armamentoJug=new Armamento();
 		dinero=100;
+		t1=new Tablero();
+		t2=new Tablero();
 		if(esOrdenador== true){
 			asignarBarcosOrdenador();
 		}
+		
 		
 	}
 	public boolean esOrdenador(){
@@ -41,31 +44,20 @@ public class Jugador {
 	}
 	
 	private void asignarBarcosOrdenador(){
-		anadirBarcoMaquina(4);
-		anadirBarcoMaquina(3);
-		anadirBarcoMaquina(3);
-		anadirBarcoMaquina(2);
-		anadirBarcoMaquina(2);
-		anadirBarcoMaquina(2);
-		anadirBarcoMaquina(1);
-		anadirBarcoMaquina(1);
-		anadirBarcoMaquina(1);
-		anadirBarcoMaquina(1);
+		
+		t1.anadirBarco(4);
+		t1.anadirBarco(3);
+		t1.anadirBarco(3);
+		t1.anadirBarco(2);
+		t1.anadirBarco(2);
+		t1.anadirBarco(2);
+		t1.anadirBarco(1);
+		t1.anadirBarco(1);
+		t1.anadirBarco(1);
+		t1.anadirBarco(1);
+		
 	}
-	public void anadirBarcoMaquina(int barcos){
-
-	int x=(int) (Math.random()*10+1);
-	int y=(int) (Math.random()*10+1);
-	int d=direccion();
-	/*while(t1.haySitio(barcos, d)!=true){
-		d=direccion();
-	}*/
-	Barco b=new Barco(barcos);
-	b.asignarEspacio(x, y, d);
-
-
 	
-	}
 
 	public Integer getRadar() {
 		// TODO Auto-generated method stub
@@ -126,6 +118,10 @@ public class Jugador {
 	
 	public void disparar(String tipo, int x, int y){
 		
+	}
+	public static void main(String[] args) {
+		Jugador j=new Jugador(true);
+		j.t1.imprimir();
 	}
 
 
