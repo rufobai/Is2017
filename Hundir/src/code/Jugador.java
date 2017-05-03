@@ -18,9 +18,11 @@ public class Jugador {
 		dinero=100;
 		t1=new Tablero();
 		t2=new Tablero();
+		listaBarcos=new ListaBarcos();
 		if(esOrdenador== true){
 			asignarBarcosOrdenador();
 		}
+		
 		
 		
 	}
@@ -31,30 +33,48 @@ public class Jugador {
 	public boolean activarEscudo(int x, int y){
 		return listaBarcos.activarEscudo(x, y);
 	}
+	public ListaBarcos getLista(){
+		return listaBarcos;
+	}
+	public void anadirBarcoALista(Barco b){
+		listaBarcos.anadirBarco(b);
+	}
 	
 	private int direccion(){
 		return (int) (Math.random()*4+1);
 	}
-	public void anadirBarco(ArrayList<ArrayList<Integer>> list, int length){
+	/*public void anadirBarco(ArrayList<ArrayList<Integer>> list, int length){
 		Barco b=new Barco(length);
 		b.darPosicion(list);
-	}
+	}*/
 	public void reparar(int x, int y){
 		dinero=dinero-20;
+		listaBarcos.reparar(x, y);
 	}
 	
 	private void asignarBarcosOrdenador(){
+		ArrayList<Casilla> e;
 		
-		t1.anadirBarco(4);
-		t1.anadirBarco(3);
-		t1.anadirBarco(3);
-		t1.anadirBarco(2);
-		t1.anadirBarco(2);
-		t1.anadirBarco(2);
-		t1.anadirBarco(1);
-		t1.anadirBarco(1);
-		t1.anadirBarco(1);
-		t1.anadirBarco(1);
+		e=t1.anadirBarco(4);
+		anadirBarcoALista(new Barco(4, e));
+		e=t1.anadirBarco(3);
+		anadirBarcoALista(new Barco(3, e));
+		e=t1.anadirBarco(3);
+		anadirBarcoALista(new Barco(3, e));
+		e=t1.anadirBarco(2);
+		anadirBarcoALista(new Barco(2, e));
+		e=t1.anadirBarco(2);
+		anadirBarcoALista(new Barco(2, e));
+		e=t1.anadirBarco(2);
+		anadirBarcoALista(new Barco(2, e));
+		e=t1.anadirBarco(1);
+		anadirBarcoALista(new Barco(1, e));
+		e=t1.anadirBarco(1);
+		anadirBarcoALista(new Barco(1, e));
+		e=t1.anadirBarco(1);
+		anadirBarcoALista(new Barco(1, e));
+		e=t1.anadirBarco(1);
+		anadirBarcoALista(new Barco(1, e));
 		
 	}
 	
@@ -102,26 +122,33 @@ public class Jugador {
 		}
 		return hay;
 	}
-	public ArrayList<Integer> radar(int x, int y){
-		ArrayList<Integer> r=new ArrayList<Integer>();
+	public ArrayList<Casilla> radar(int x, int y){
 		
-		boolean hay=false;
-		for(int x1=x-1; x1==x+1;x1++){
-			for(int y1=y-1;y1==y+1;y1++){
-				hay=listaBarcos.existeBarco(x1, y1);
-				r.add(x1);
-				r.add(y1);
-			}
-		}
+		armamentoJug.lanzarRadar();
+		ArrayList<Casilla> r=t1.radar(x, y);
 		return r;
 	}
 	
-	public void disparar(String tipo, int x, int y){
+	public ArrayList<Casilla> disparar(String tipo, int x, int y){
+		ArrayList<Casilla> m=new ArrayList<Casilla>();
 		
-	}
-	public static void main(String[] args) {
-		Jugador j=new Jugador(true);
-		j.t1.imprimir();
+		if(tipo=="normal" && armamentoJug.getBombas()!=0){
+			m=listaBarcos.disparoNormal(x, y);
+			armamentoJug.lanzarBomba();
+		}else if(tipo=="misil" && armamentoJug.getMisiles()!=0){
+			m=listaBarcos.disparoMisil(x, y);
+			armamentoJug.lanzarMisil();
+		}else if(tipo=="oe" && armamentoJug.getMisilOE()!=0){
+			m=listaBarcos.disparoMOE(x, y);
+			armamentoJug.lanzarMisilOE();
+		}else if(tipo=="ns" && armamentoJug.getMisilNS()!=0){
+			m=listaBarcos.disparoMNS(x, y);
+			armamentoJug.lanzarMisilNS();
+		}else{
+			m=listaBarcos.disparoMT(x, y);
+			armamentoJug.lanzarMisilAB();
+		}
+		return m;
 	}
 
 

@@ -1,5 +1,6 @@
 package code;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,7 +27,7 @@ public class Tablero {
 		for(int x=0;x<=9;x++){
 			tablero.add(x, new ArrayList<Casilla>());
 			for(int y=0;y<=9;y++){
-				tablero.get(x).add(y, new Casilla());
+				tablero.get(x).add(y, new Casilla(x, y));
 			}
 		}
 		
@@ -38,9 +39,7 @@ public class Tablero {
 			int p1=x;
 			int p2=y;
 			int z=0;
-			System.out.println(2);
 			if(direccion==1){
-				System.out.println(2);
 					while(z<=cuantos-1 || esta!=false){
 						if(tablero.get(x).get(y).getEstado()== true){
 							esta=true;
@@ -84,25 +83,22 @@ public class Tablero {
 		return (int) (Math.random()*4+1);
 	}
 	
-	public void anadirBarco(int length){
+	public ArrayList<Casilla> anadirBarco(int length){
 		try{
 		int x=(int) (Math.random()*9+1);
 		System.out.println("coordenadada" + x);
 		int y=(int) (Math.random()*9+1);
 		System.out.println("coordenadada" + y);
 		int d=direccion();
-		System.out.println(1);
-		/*while(haySitio(length, d,x,y)==false){
-			System.out.println(2);
-			d=direccion();
-		}*/
-		
+
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		int p1=x;
 		int p2=y;
 		if(d==1){
 			for(int z=0;z<=length-1;z++){
 
 				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
 				System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p2++;
@@ -112,6 +108,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 
 				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
 				System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p1++;
@@ -120,6 +117,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 
 				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
 				System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p2=p2-1;
@@ -127,15 +125,35 @@ public class Tablero {
 		}else{
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
 				System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p1=p1-1;
 			}
+
+			return lista;
+			
 		}
 		}catch(Exception e){
 			this.anadirBarco(length);
 		}
+		return null;
 		
+	}
+	public ArrayList<Casilla> radar(int x, int y){
+		
+		ArrayList<Casilla> r= new ArrayList<Casilla>();
+		r.add(tablero.get(x).get(y));
+		r.add(tablero.get(x-1).get(y-1));
+		r.add(tablero.get(x-1).get(y));
+		r.add(tablero.get(x-1).get(y+1));
+		r.add(tablero.get(x).get(y-1));
+		r.add(tablero.get(x).get(y+1));
+		r.add(tablero.get(x+1).get(y-1));
+		r.add(tablero.get(x+1).get(y));
+		r.add(tablero.get(x+1).get(y+1));
+		
+		return r;
 	}
 	
 	public void imprimir(){

@@ -14,7 +14,7 @@ public class HundirFlota {
 	
 	public void empezarPartida(){
 		listaJugadores.add(new Jugador(false));
-		//listaJugadores.add(new Jugador(true));
+		listaJugadores.add(new Jugador(true));
 	}
 	
 	public static HundirFlota getMiFlota(){
@@ -35,7 +35,7 @@ public class HundirFlota {
 		listaTemp2.add(listaPos.get(0));
 		
 		//listaTemp.add(listaPos.get(0));
-		listaJugadores.get(0).anadirBarco(listaTemp, 4);
+		//listaJugadores.get(0).anadirBarco(listaTemp, 4);
 		
 	}
 
@@ -73,8 +73,8 @@ public class HundirFlota {
 		return hay;
 	}
 	
-	public ArrayList<Integer> radarJugador(int x, int y){
-		ArrayList<Integer> r=new ArrayList<Integer>();
+	public ArrayList<Casilla> radarJugador(int x, int y){
+		ArrayList<Casilla> r=new ArrayList<Casilla>();
 		if(listaJugadores.get(0).esOrdenador()== true){
 			r=listaJugadores.get(1).radar(x, y);
 		}else{
@@ -83,8 +83,8 @@ public class HundirFlota {
 		
 		return r;
 	}
-	public ArrayList<Integer> radarOrdenador(int x, int y){
-		ArrayList<Integer> r=new ArrayList<Integer>();
+	public ArrayList<Casilla> radarOrdenador(int x, int y){
+		ArrayList<Casilla> r=new ArrayList<Casilla>();
 		if(listaJugadores.get(0).esOrdenador()!= true){
 			r=listaJugadores.get(1).radar(x, y);
 		}else{
