@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import code.Casilla;
 import code.HundirFlota;
 
 import java.awt.GridBagLayout;
@@ -84,6 +86,7 @@ public class Juego extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		ArrayList<Button> listaDes = new ArrayList<Button>();
 		
 		JPanel panelPc = new JPanel();
 		contentPane.add(panelPc, BorderLayout.NORTH);
@@ -93,26 +96,7 @@ public class Juego extends JFrame {
 		gbl_panelPc.columnWeights = new double[]{Double.MIN_VALUE};
 		gbl_panelPc.rowWeights = new double[]{Double.MIN_VALUE};
 		panelPc.setLayout(gbl_panelPc);
-		
-		
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				JButton button = new JButton("?");				
-				button.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyPressed(KeyEvent arg0) {
-						/*ImageIcon water = new ImageIcon("/estaticos/water.png");
-						button.setIcon(water);
-						System.out.println("Cambio");*/
-					}
-				});
-				GridBagConstraints lugar = new GridBagConstraints();
-				//System.out.println("Posicion: "+ i + " " + j);
-				lugar.gridx = i;
-				lugar.gridy = j;
-				panelPc.add(button, lugar);
-			}
-		}
+			
 		
 		panelJug = new JPanel();
 		contentPane.add(panelJug, BorderLayout.SOUTH);
@@ -402,7 +386,119 @@ public class Juego extends JFrame {
 					.addContainerGap(557, Short.MAX_VALUE))
 		);
 		panelInfo.setLayout(gl_panelInfo);
-		
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				JButton button = new JButton("?");
+				GridBagConstraints lugar2 = new GridBagConstraints();
+				//System.out.println("Posicion: "+ i + " " + j);
+				lugar2.gridx = i;
+				lugar2.gridy = j;
+				button.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						if(estado.equals("Juego")){
+						
+						if(radar){
+							if(btnR.isEnabled()){
+								System.out.println("Llamada a radar 1");							
+								boolean hayBarcos = false;
+								hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar2.gridx, lugar2.gridy);
+								if(hayBarcos){
+									System.out.println("Llamada a radar 2");
+									ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar2.gridx, lugar2.gridy);
+									lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0).getX() + ", " +barcosCerca.get(0).getY());
+									 int restantes = Integer.parseInt(labelRN.getText());
+									restantes = restantes - 1;
+									labelTN.setText(""+restantes);
+									if(restantes == 0){
+										btnR.setEnabled(false);
+										btnR.setBackground(Color.GRAY);
+										radar = false;
+									}
+								}
+							}
+						}else{
+							
+							if(btnR.isEnabled()){
+							
+							System.out.println("DISPARO EN: X= "+ lugar2.gridx + " Y= " + lugar2.gridy + " De tipo: " + tipoDisparo );
+							int restantes = 0;
+							HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+							if(tipoDisparo.equals("MT")){
+								restantes = Integer.parseInt(labelTN.getText());
+								restantes = restantes - 1;
+								labelTN.setText(""+restantes);
+								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(restantes == 0){
+									btnMt.setEnabled(false);
+									btnMt.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
+							}else if(tipoDisparo.equals("MOE")){
+								restantes = Integer.parseInt(labelMOEN.getText());		
+								restantes = restantes - 1;
+								labelMOEN.setText(""+restantes);
+								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(restantes == 0){
+									btnMoe.setEnabled(false);
+									btnMoe.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+								
+								//PINTO TODAS LAS CASILLAS DE FILA
+							}else if(tipoDisparo.equals("MNS")){
+								System.out.println("Entra en MNS");
+								restantes = Integer.parseInt(labelMNSN.getText());		
+								restantes = restantes - 1;
+								System.out.println("Los restantes es= " + restantes);
+								labelMNSN.setText(""+restantes);
+								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(restantes == 0){
+									btnMns.setEnabled(false);
+									btnMns.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+								//PINTO TODAS LAS CASILLAS DE COLUMNA
+							}else if(tipoDisparo.equals("M")){
+								restantes = Integer.parseInt(labelMN.getText());		
+								restantes = restantes - 1;
+								labelMN.setText(""+restantes);
+								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(restantes == 0){
+									btnM.setEnabled(false);
+									btnM.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+							}else if(tipoDisparo.equals("B")){
+								restantes = Integer.parseInt(labelBN.getText());		
+								restantes = restantes - 1;
+								labelBN.setText(""+restantes);
+								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(restantes == 0){
+									btnB.setEnabled(false);
+									btnB.setBackground(Color.GRAY);
+									tipoDisparo = "0";
+								}
+							}
+							}
+						}
+						
+						/*ImageIcon ns = new ImageIcon("water.png");
+						button.setText("");
+						button.setIcon(water);
+						System.out.println("Cambio");*/
+					}
+				}
+					
+				});
+				GridBagConstraints lugar = new GridBagConstraints();
+				//System.out.println("Posicion: "+ i + " " + j);
+				lugar.gridx = i;
+				lugar.gridy = j;
+				panelPc.add(button, lugar);
+			}
+		}
 		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
@@ -421,6 +517,7 @@ public class Juego extends JFrame {
 						if(estado.equals("Inicio")){
 							System.out.println("Entro ");
 							button.setEnabled(false);
+							button.setBackground(Color.ORANGE);
 							barcosInsert--;
 							System.out.println("BI: " + barcosInsert);
 							if(barcosInsert == 16){
@@ -444,14 +541,14 @@ public class Juego extends JFrame {
 							listaPos.add(lugar.gridy);
 							//resaltarPos(lugar.gridx, lugar.gridy);
 						}else if(radar){
-							if(btnR.isEnabled()){}
+							/*if(btnR.isEnabled()){}
 							System.out.println("Llamada a radar 1");							
 							boolean hayBarcos = false;
 							hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar.gridx, lugar.gridy);
 							if(hayBarcos){
 								System.out.println("Llamada a radar 2");
-								ArrayList<Integer> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar.gridx, lugar.gridy);
-								lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0) + ", " +barcosCerca.get(1));
+								ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar.gridx, lugar.gridy);
+								lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0).getX() + ", " +barcosCerca.get(0).getY());
 								 int restantes = Integer.parseInt(labelRN.getText());
 								restantes = restantes - 1;
 								labelTN.setText(""+restantes);
@@ -460,8 +557,10 @@ public class Juego extends JFrame {
 									btnR.setBackground(Color.GRAY);
 									radar = false;
 								}
-							}							
+							}	*/
+							System.out.println("RADAR EN ZONA ERRONEA");
 						}else{
+							/*
 							System.out.println("DISPARO EN: X= "+ lugar.gridx + " Y= " + lugar.gridy + " De tipo: " + tipoDisparo );
 							int restantes = 0;
 							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar.gridx, lugar.gridy);
@@ -517,6 +616,8 @@ public class Juego extends JFrame {
 									tipoDisparo = "0";
 								}
 							}
+							*/
+							System.out.println("DISPARO EN ZONA ERRONEA");
 						}
 						
 						/*ImageIcon ns = new ImageIcon("water.png");

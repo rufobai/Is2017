@@ -94,8 +94,13 @@ public class HundirFlota {
 		return r;
 	}
 	
-	public void disparar(String tipo, int x, int y){
-		listaJugadores.get(0).disparar(tipo, x, y);
+	public boolean disparar(String tipo, int x, int y){
+		
+		if(listaJugadores.get(0).disparar(tipo, x, y).size() == 0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	public void disparaElOrdenador(String tipo, int x, int y){
