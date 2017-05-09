@@ -63,8 +63,10 @@ public class Jugador {
 			anadirBarcoALista(new Barco(4, l));
 			cont=cont+1;
 			asignado=true;
-		}else{
-			asignado=listaBarcos.getLista().get(listaBarcos.getLista().size()-1).anadirPosicion(x, y);
+		}else if(listaBarcos.getLista().get(listaBarcos.getLista().size()-1).anadirPosicion(x, y)==true){
+			m=t1.asignarBarco(x, y);
+			listaBarcos.getLista().get(listaBarcos.getLista().size()-1).getLista().add(m);
+			asignado=true;
 			cont=cont+1;
 		}
 		return asignado;

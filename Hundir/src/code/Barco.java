@@ -51,6 +51,7 @@ public class Barco {
 			if(c.getX()==itr.next().getX() && c.getX()==x){
 				if(y==c.getY()-1 || y==itr.next().getY()+1){
 					es=true;
+					
 				}
 			}else if(c.getY()==itr.next().getY() && c.getY()==y){
 				if(x==c.getX()-1 || x==itr.next().getX()+1){
