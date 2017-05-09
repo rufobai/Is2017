@@ -83,6 +83,12 @@ public class Tablero {
 		return (int) (Math.random()*4+1);
 	}
 	
+	public Casilla asignarBarco(int x, int y){
+		Casilla m=tablero.get(x).get(y);
+		m.cambiarEstado();
+		return m;
+	}
+	
 	public ArrayList<Casilla> anadirBarco(int length){
 		try{
 		int x=(int) (Math.random()*9+1);

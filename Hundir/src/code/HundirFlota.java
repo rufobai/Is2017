@@ -22,20 +22,15 @@ public class HundirFlota {
 	}
 
 
-	public void asignarBarcosJugador(ArrayList<Integer> listaPos) {
+	public boolean asignarBarcosJugador(int x, int y) {
+		boolean asignado=false;
 		
-		System.out.println("Pendiente de asignar barcos");
+		asignado=listaJugadores.get(0).anadirBarcoJug(x, y);
 		
-		ArrayList<ArrayList<Integer>> listaTemp = new ArrayList<ArrayList<Integer>>();
-		ArrayList<Integer> listaTemp2 = new ArrayList<Integer>();
-		listaTemp2.add(listaPos.get(0));
-		listaTemp2.add(listaPos.get(1));
-		listaTemp.add(listaTemp2);
-		listaTemp2.add(listaPos.get(0));
-		listaTemp2.add(listaPos.get(0));
 		
-		//listaTemp.add(listaPos.get(0));
-		//listaJugadores.get(0).anadirBarco(listaTemp, 4);
+		
+		return asignado;
+		
 		
 	}
 

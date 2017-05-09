@@ -38,6 +38,55 @@ public class Barco {
 		}
 		
 	}
+	
+	public boolean anadirPosicion(int x, int y){
+		boolean es=false;
+		Casilla c,c1;
+		Iterator<Casilla> itr=lista.iterator();
+		if(lista.size()==1){
+			c=itr.next();
+			es=posible(x, y, c);
+		}else if(lista.size()==2){
+			c=itr.next();
+			if(c.getX()==itr.next().getX() && c.getX()==x){
+				if(y==c.getY()-1 || y==itr.next().getY()+1){
+					es=true;
+				}
+			}else if(c.getY()==itr.next().getY() && c.getY()==y){
+				if(x==c.getX()-1 || x==itr.next().getX()+1){
+					es=true;
+				}
+			}
+		}else if(lista.size()==3){
+			c=itr.next();
+			c1=itr.next();
+			if(c.getX()==itr.next().getX() && c.getX()==x){
+				if(y==c.getY()-1 || y==itr.next().getY()+1){
+					es=true;
+				}
+			}else if(c.getY()==itr.next().getY() && c.getY()==y){
+				if(x==c.getX()-1 || x==itr.next().getX()+1){
+					es=true;
+				}
+			}
+		}
+		return es;
+	}
+	
+	public boolean posible(int x, int y, Casilla c){
+		boolean es=false;
+		if(c.getX()==x){
+			if(c.getY()-1==y || c.getY()+1==y){
+				es=true;
+			}
+		}else if(c.getY()==y){
+			if(c.getX()-1==x || c.getX()+1==x){
+				es=true;
+			}
+		}
+		
+		return es;
+	}
 	public void anadirToque(int x, int y){
 		if(toques!=longitud){
 			Casilla m=buscar(x,y);

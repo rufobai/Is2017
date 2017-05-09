@@ -11,6 +11,7 @@ public class Jugador {
 	private Tablero t1;
 	private Tablero t2;
 	private double dinero;
+	private int cont;
 	
 	public Jugador(boolean es){
 		esOrdenador=es;
@@ -22,6 +23,7 @@ public class Jugador {
 		if(esOrdenador== true){
 			asignarBarcosOrdenador();
 		}
+		cont=0;
 		
 		
 		
@@ -50,6 +52,22 @@ public class Jugador {
 	public void reparar(int x, int y){
 		dinero=dinero-20;
 		listaBarcos.reparar(x, y);
+	}
+	public boolean anadirBarcoJug(int x, int y){
+		boolean asignado=false;
+		Casilla m;
+		ArrayList<Casilla> l=new ArrayList<Casilla>();
+		if(cont==0 || cont==4 || cont==7 || cont==10 || cont==12 || cont==14 || cont==16 || cont==17 || cont ==18 || cont==19 ){
+			m=t1.asignarBarco(x, y);
+			l.add(m);
+			anadirBarcoALista(new Barco(4, l));
+			cont=cont+1;
+			asignado=true;
+		}else{
+			asignado=listaBarcos.getLista().get(listaBarcos.getLista().size()-1).anadirPosicion(x, y);
+			cont=cont+1;
+		}
+		return asignado;
 	}
 	
 	private void asignarBarcosOrdenador(){
@@ -150,6 +168,8 @@ public class Jugador {
 		}
 		return m;
 	}
+	
+	
 
 
 }
