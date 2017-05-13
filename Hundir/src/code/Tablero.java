@@ -114,9 +114,9 @@ public class Tablero {
 		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		try{
 		int x=(int) (Math.random()*9+1);
-		System.out.println("coordenadada" + x);
+		//System.out.println("coordenadada" + x);
 		int y=(int) (Math.random()*9+1);
-		System.out.println("coordenadada" + y);
+		//System.out.println("coordenadada" + y);
 		int d=direccion();
 
 		
@@ -127,7 +127,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p2++;
 			}
@@ -137,7 +137,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p1++;
 			}
@@ -146,7 +146,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p2=p2-1;
 			}
@@ -154,7 +154,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos" + p1 +p2);
 				m.cambiarEstado();
 				p1=p1-1;
 			}
