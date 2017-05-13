@@ -122,6 +122,8 @@ public class Barco {
 	public boolean esta(int x, int y){
 		int a=0;
 		boolean esta=false;
+		System.out.println(lista.size());
+		System.out.println(longitud);
 		while(a<=longitud-1 || esta){
 			
 			if(lista.get(a).getX()==x && lista.get(a).getY()==y){

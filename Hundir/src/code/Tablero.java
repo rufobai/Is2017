@@ -111,6 +111,7 @@ public class Tablero {
 	}
 	
 	public ArrayList<Casilla> anadirBarco(int length){
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		try{
 		int x=(int) (Math.random()*9+1);
 		System.out.println("coordenadada" + x);
@@ -118,7 +119,7 @@ public class Tablero {
 		System.out.println("coordenadada" + y);
 		int d=direccion();
 
-		ArrayList<Casilla> lista=new ArrayList<Casilla>();
+		
 		int p1=x;
 		int p2=y;
 		if(d==1){
@@ -158,13 +159,13 @@ public class Tablero {
 				p1=p1-1;
 			}
 
-			return lista;
+			
 			
 		}
 		}catch(Exception e){
 			this.anadirBarco(length);
 		}
-		return null;
+		return lista;
 		
 	}
 	public ArrayList<Casilla> radar(int x, int y){
