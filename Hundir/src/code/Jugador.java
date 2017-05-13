@@ -86,7 +86,7 @@ public class Jugador {
 		}else if( cont==16 || cont==17 || cont ==18 || cont==19){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
-			anadirBarcoALista(new Barco(2, l));
+			anadirBarcoALista(new Barco(1, l));
 			cont=cont+1;
 			asignado=true;
 		}else if(listaBarcos.getLista().get(listaBarcos.getLista().size()-1).anadirPosicion(x, y)==true){
