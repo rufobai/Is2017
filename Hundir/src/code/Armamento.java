@@ -24,6 +24,9 @@ public class Armamento {
 	public int getRadar() {
 		return radar;
 	}
+	public void anadirRadar(){
+		radar=radar+1;
+	}
 
 	public int getBombas() {
 		return bombas;
@@ -32,17 +35,29 @@ public class Armamento {
 	public int getMisiles() {
 		return misiles;
 	}
+	public void anadirMisil(){
+		misiles=misiles+1;
+	}
 
 	public int getMisilNS() {
 		return misilNS;
+	}
+	public void anadirMisilNS(){
+		misilNS=misilNS+1;
 	}
 
 	public int getMisilOE() {
 		return misilOE;
 	}
+	public void anadirMisilOE(){
+		misilOE=misilOE+1;
+	}
 
 	public int getMisilAB() {
 		return misilAB;
+	}
+	public void anadirMisilAB(){
+		misilAB=misilAB+1;
 	}
 	
 	public boolean saberRadar(){

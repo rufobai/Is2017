@@ -10,7 +10,7 @@ public class Jugador {
 	private boolean esOrdenador;
 	private Tablero t1;
 	private Tablero t2;
-	private double dinero;
+	private int dinero;
 	private int cont;
 	private Casilla ultimoDisparo;
 	
@@ -33,6 +33,9 @@ public class Jugador {
 	public boolean esOrdenador(){
 		return esOrdenador;
 	}
+	public int getDinero(){
+		return dinero;
+	}
 	public Tablero getTablero(){
 		return t1;
 	}
@@ -41,7 +44,13 @@ public class Jugador {
 	}
 	
 	public boolean activarEscudo(int x, int y){
-		return listaBarcos.activarEscudo(x, y);
+		if(dinero-20!=0){
+			dinero=dinero-20;
+			return listaBarcos.activarEscudo(x, y);
+		}else{
+			return false;
+		}
+		
 	}
 	public ListaBarcos getLista(){
 		return listaBarcos;
@@ -173,6 +182,30 @@ public class Jugador {
 		armamentoJug.lanzarRadar();
 		ArrayList<Casilla> r=t2.radar(x, y);
 		return r;
+	}
+	public boolean comprar(String tipo){
+
+		if(dinero==0){
+			return false;
+		}else if(tipo=="M" ){
+			
+			armamentoJug.anadirMisil();
+			dinero=dinero-20;
+			return true;
+		}else if(tipo=="MOE" ){
+			armamentoJug.anadirMisilOE();
+			dinero=dinero-20;
+			return true;
+		}else if(tipo=="MNS"){
+			armamentoJug.anadirMisilNS();
+			dinero=dinero-20;
+			return true;
+		}else{
+			armamentoJug.anadirMisilAB();
+			dinero=dinero-20;
+			return true;
+		}
+		
 	}
 	
 	public ArrayList<Casilla> disparar(String tipo, int x, int y){

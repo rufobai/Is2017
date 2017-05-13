@@ -118,10 +118,20 @@ public class Tablero {
 		int y=(int) (Math.random()*9+1);
 		//System.out.println("coordenadada" + y);
 		int d=direccion();
-
-		
 		int p1=x;
 		int p2=y;
+		
+		if(p1==9){
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		if(d==1){
 			for(int z=0;z<=length-1;z++){
 

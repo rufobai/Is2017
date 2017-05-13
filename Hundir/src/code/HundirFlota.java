@@ -3,6 +3,8 @@ package code;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.Spring;
+
 
 
 public class HundirFlota {
@@ -132,14 +134,41 @@ public class HundirFlota {
 		return a;
 	}
 	
-	public void disparaElOrdenador(){
+	public ArrayList<Integer> disparaElOrdenador(){
 		
 		ArrayList<Integer> a=listaJugadores.get(1).dispararOrdenador();
 		String tipo=listaJugadores.get(1).tipoDisparo();
 		
-		listaJugadores.get(0).disparar(tipo, a.get(0), a.get(1));
-		asignarTaleros();
+		ArrayList<Casilla> c=listaJugadores.get(0).disparar(tipo, a.get(0), a.get(1));
+		Iterator<Casilla> itr=c.iterator();
+		Casilla casi;
 		
+		if(c.size() == 0){
+			asignarTaleros();
+			
+		}else{
+			while(itr.hasNext()){
+				casi=itr.next();
+				a.add(casi.getX());
+				a.add(casi.getY());
+			}
+			asignarTaleros();
+			
+		}
+		return a;
+		
+	}
+	public int dineroJugador(){
+		return listaJugadores.get(0).getDinero();
+	}
+	
+	public boolean comprar(String tipo){
+		
+		return listaJugadores.get(0).comprar(tipo);
+	}
+	
+	public boolean darEscudo(int x, int y){
+		return listaJugadores.get(0).activarEscudo(x, y);
 	}
 	
 	
