@@ -48,13 +48,14 @@ public class Barco {
 			es=posible(x, y, c);
 		}else if(lista.size()==2){
 			c=itr.next();
-			if(c.getX()==itr.next().getX() && c.getX()==x){
-				if(y==c.getY()-1 || y==itr.next().getY()+1){
+			c1=itr.next();
+			if(c.getX()==c1.getX() && c.getX()==x){
+				if(y==c.getY()-1 || y==c1.getY()+1){
 					es=true;
 					
 				}
-			}else if(c.getY()==itr.next().getY() && c.getY()==y){
-				if(x==c.getX()-1 || x==itr.next().getX()+1){
+			}else if(c.getY()==c1.getY() && c.getY()==y){
+				if(x==c.getX()-1 || x==c1.getX()+1){
 					es=true;
 				}
 			}
