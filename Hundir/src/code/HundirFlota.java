@@ -102,9 +102,11 @@ public class HundirFlota {
 	
 	public ArrayList<Integer> disparar(String tipo, int x, int y){
 		ArrayList<Integer> a=new ArrayList<Integer>();
+		System.out.println("disparar");
 		ArrayList<Casilla> c=listaJugadores.get(1).disparar(tipo, x, y);
 		Iterator<Casilla> itr=c.iterator();
 		Casilla casi;
+		
 		if(c.size() == 0){
 			asignarTaleros();
 			

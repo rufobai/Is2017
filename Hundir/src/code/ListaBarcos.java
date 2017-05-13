@@ -59,7 +59,7 @@ public class ListaBarcos {
 	}
 	
 	public ArrayList<Casilla> disparoNormal(int x, int y){
-		
+		System.out.println("Disparo normal");
 		Barco a=null;
 		boolean esta=false;	
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
@@ -68,6 +68,7 @@ public class ListaBarcos {
 			a=it.next();
 			if(a.esta(x, y)){
 				a.anadirToque(x,y);
+				System.out.println("disparoNomral");
 				lista.add(a.buscar(x, y));
 				esta=true;
 			}

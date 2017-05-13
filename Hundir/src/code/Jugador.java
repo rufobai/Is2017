@@ -177,17 +177,17 @@ public class Jugador {
 	
 	public ArrayList<Casilla> disparar(String tipo, int x, int y){
 		ArrayList<Casilla> m=new ArrayList<Casilla>();
-		
-		if(tipo=="normal" && armamentoJug.getBombas()!=0){
+		System.out.println("dispararJugador");
+		if(tipo=="B" && armamentoJug.getBombas()!=0){
 			m=listaBarcos.disparoNormal(x, y);
 			armamentoJug.lanzarBomba();
-		}else if(tipo=="misil" && armamentoJug.getMisiles()!=0){
+		}else if(tipo=="M" && armamentoJug.getMisiles()!=0){
 			m=listaBarcos.disparoMisil(x, y);
 			armamentoJug.lanzarMisil();
-		}else if(tipo=="oe" && armamentoJug.getMisilOE()!=0){
+		}else if(tipo=="MOE" && armamentoJug.getMisilOE()!=0){
 			m=listaBarcos.disparoMOE(x, y);
 			armamentoJug.lanzarMisilOE();
-		}else if(tipo=="ns" && armamentoJug.getMisilNS()!=0){
+		}else if(tipo=="MNS" && armamentoJug.getMisilNS()!=0){
 			m=listaBarcos.disparoMNS(x, y);
 			armamentoJug.lanzarMisilNS();
 		}else{
