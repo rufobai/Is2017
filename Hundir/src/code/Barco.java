@@ -41,7 +41,7 @@ public class Barco {
 	
 	public boolean anadirPosicion(int x, int y){
 		boolean es=false;
-		Casilla c,c1;
+		Casilla c,c1,c2;
 		Iterator<Casilla> itr=lista.iterator();
 		if(lista.size()==1){
 			c=itr.next();
@@ -62,12 +62,13 @@ public class Barco {
 		}else if(lista.size()==3){
 			c=itr.next();
 			c1=itr.next();
+			c2=itr.next();
 			if(c.getX()==c1.getX() && c.getX()==x){
-				if(y==c.getY()-1 || y==c1.getY()+1){
+				if(y==c.getY()-1 || y==c2.getY()+1){
 					es=true;
 				}
 			}else if(c.getY()==c1.getY() && c.getY()==y){
-				if(x==c.getX()-1 || x==c1.getX()+1){
+				if(x==c.getX()-1 || x==c2.getX()+1){
 					es=true;
 				}
 			}
