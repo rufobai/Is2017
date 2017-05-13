@@ -88,17 +88,33 @@ public class HundirFlota {
 		
 		return r;
 	}
+	public void asignarTaleros(){
+		Tablero t1;
+		t1=listaJugadores.get(0).getTablero();
+		listaJugadores.get(1).darTablero(t1);
+		
+		t1=listaJugadores.get(1).getTablero();
+		listaJugadores.get(0).darTablero(t1);
+	}
 	
 	public boolean disparar(String tipo, int x, int y){
 		
-		if(listaJugadores.get(0).disparar(tipo, x, y).size() == 0){
+		if(listaJugadores.get(1).disparar(tipo, x, y).size() == 0){
+			asignarTaleros();
 			return false;
 		}else{
+			asignarTaleros();
 			return true;
 		}
 	}
 	
-	public void disparaElOrdenador(String tipo, int x, int y){
+	public void disparaElOrdenador(){
+		
+		ArrayList<Integer> a=listaJugadores.get(1).dispararOrdenador();
+		String tipo=listaJugadores.get(1).tipoDisparo();
+		
+		listaJugadores.get(0).disparar(tipo, a.get(0), a.get(1));
+		asignarTaleros();
 		
 	}
 	

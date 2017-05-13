@@ -32,6 +32,27 @@ public class Tablero {
 		}
 		
 	}
+	public Casilla noDanada(Casilla a){
+		
+		int x=a.getX();
+		int y=a.getY();
+		
+		if(tablero.get(x+1).get(y).getDañada()==false){
+			return tablero.get(x+1).get(y);
+		}else if(tablero.get(x).get(y+1).getDañada()==false){
+			return tablero.get(x).get(y+1);
+		}else if(tablero.get(x-1).get(y).getDañada()==false){
+			return tablero.get(x-1).get(y);
+		}else if(tablero.get(x).get(y-1).getDañada()==false){
+			return tablero.get(x).get(y-1);
+		}else {
+			int x1=(int) (Math.random()*9+1);
+			int y1=(int) (Math.random()*9+1);
+			return tablero.get(x1).get(y1);
+		}
+		
+		
+	}
 	
 	public boolean haySitio(int cuantos, int direccion,int x, int y){		
 		try{

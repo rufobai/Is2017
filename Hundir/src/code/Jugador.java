@@ -12,9 +12,11 @@ public class Jugador {
 	private Tablero t2;
 	private double dinero;
 	private int cont;
+	private Casilla ultimoDisparo;
 	
 	public Jugador(boolean es){
 		esOrdenador=es;
+		ultimoDisparo=null;
 		armamentoJug=new Armamento();
 		dinero=100;
 		t1=new Tablero();
@@ -30,6 +32,12 @@ public class Jugador {
 	}
 	public boolean esOrdenador(){
 		return esOrdenador;
+	}
+	public Tablero getTablero(){
+		return t1;
+	}
+	public void darTablero(Tablero t){
+		t2=t;
 	}
 	
 	public boolean activarEscudo(int x, int y){
@@ -171,7 +179,43 @@ public class Jugador {
 		return m;
 	}
 	
+	public ArrayList<Integer> dispararOrdenador(){
+		ArrayList<Integer> m=new ArrayList<Integer>();
+		
+		if(ultimoDisparo==null || ultimoDisparo.getEstado()==false){
+			int a=(int) (Math.random()*9+1);
+			int b=(int) (Math.random()*9+1);
+			m.add(a);
+			m.add(b);
+			ultimoDisparo=t2.getTablero().get(a).get(b);
+		}else{
+			Casilla c=t2.noDanada(ultimoDisparo);
+			m.add(c.getX());
+			m.add(c.getY());
+			ultimoDisparo=c;
+		}
+		
+		
+		return m;
+		
+	}
 	
+	public String tipoDisparo(){
+		
+		int r=(int) (Math.random()*5+1);
+		if(r==1){
+			return "ab";
+		}else if(r==2){
+			return "ns";
+		}else if(r==3){
+			return "oe";
+		}else if(r==4){
+			return "misil";
+		}else{
+			return "normal";
+		}
+		
+	}
 
 
 }
