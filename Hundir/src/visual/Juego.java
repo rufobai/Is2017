@@ -177,15 +177,19 @@ public class Juego extends JFrame {
 		btnM.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(btnM.isEnabled()){	
-				if (tipoDisparo.equals("M")) {
-					tipoDisparo = "0";
-					btnM.setBackground(Color.gray);
-				}else if(tipoDisparo.equals("0")){
-					tipoDisparo = "M";
-					btnM.setBackground(Color.GREEN);
-				}
-				}
+				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					System.out.println("DERECHO");
+				}else{
+					if(btnM.isEnabled()){	
+						if (tipoDisparo.equals("M")) {
+							tipoDisparo = "0";
+							btnM.setBackground(Color.gray);
+						}else if(tipoDisparo.equals("0")){
+							tipoDisparo = "M";
+							btnM.setBackground(Color.GREEN);
+						}
+					}
+				}				
 			}		
 			
 		});
@@ -199,16 +203,22 @@ public class Juego extends JFrame {
 		btnMns.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(btnMns.isEnabled()){	
-				if (tipoDisparo.equals("MNS")) {
-					tipoDisparo = "0";
-					btnMns.setBackground(Color.gray);
-				}else if(tipoDisparo.equals("0")){
-					tipoDisparo = "MNS";
-					System.out.println("Disparo cambiado a: " + tipoDisparo);
-					btnMns.setBackground(Color.GREEN);
+				
+				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					System.out.println("DERECHO");
+				}else{
+					if(btnMns.isEnabled()){	
+						if (tipoDisparo.equals("MNS")) {
+							tipoDisparo = "0";
+							btnMns.setBackground(Color.gray);
+						}else if(tipoDisparo.equals("0")){
+							tipoDisparo = "MNS";
+							System.out.println("Disparo cambiado a: " + tipoDisparo);
+							btnMns.setBackground(Color.GREEN);
+						}
+					}
 				}
-				}
+				
 			}
 		});
 		btnMns.addActionListener(new ActionListener() {
@@ -221,15 +231,20 @@ public class Juego extends JFrame {
 		 btnMoe.addMouseListener(new MouseAdapter() {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
-		 		if(btnMoe.isEnabled()){		 	
-		 		if (tipoDisparo.equals("MOE")) {
-					tipoDisparo = "0";
-					btnMoe.setBackground(Color.gray);
-				}else if(tipoDisparo.equals("0")){
-					tipoDisparo = "MOE";
-					btnMoe.setBackground(Color.GREEN);
+		 		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					System.out.println("DERECHO");
+				}else{
+					if(btnMoe.isEnabled()){		 	
+				 		if (tipoDisparo.equals("MOE")) {
+							tipoDisparo = "0";
+							btnMoe.setBackground(Color.gray);
+						}else if(tipoDisparo.equals("0")){
+							tipoDisparo = "MOE";
+							btnMoe.setBackground(Color.GREEN);
+						}
+				 	}
 				}
-		 	}
+		 		
 		 	}
 		 });
 		
@@ -238,15 +253,20 @@ public class Juego extends JFrame {
 		 btnMt.addMouseListener(new MouseAdapter() {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
-		 		if(btnMt.isEnabled()){	
-		 		if (tipoDisparo.equals("MT")) {
-					tipoDisparo = "0";
-					btnMt.setBackground(Color.gray);
-				}else if(tipoDisparo.equals("0")){
-					tipoDisparo = "Mt";
-					btnMt.setBackground(Color.GREEN);
+		 		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					System.out.println("DERECHO");
+				}else{
+					if(btnMt.isEnabled()){	
+				 		if (tipoDisparo.equals("MT")) {
+							tipoDisparo = "0";
+							btnMt.setBackground(Color.gray);
+						}else if(tipoDisparo.equals("0")){
+							tipoDisparo = "Mt";
+							btnMt.setBackground(Color.GREEN);
+						}
+				 	}
 				}
-		 		}
+		 		
 		 	}
 		 });
 		
@@ -259,13 +279,18 @@ public class Juego extends JFrame {
 		 btnR.addMouseListener(new MouseAdapter() {		 	
 
 			@Override
-		 	public void mouseClicked(MouseEvent arg0) {
-		 		radar = !radar;
-		 		if(radar){
-		 			btnR.setBackground(Color.GREEN);
-		 		}else{
-		 			btnR.setBackground(Color.GRAY);
-		 		}
+		 	public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					System.out.println("DERECHO");
+				}else{
+					radar = !radar;
+			 		if(radar){
+			 			btnR.setBackground(Color.GREEN);
+			 		}else{
+			 			btnR.setBackground(Color.GRAY);
+			 		}
+				}
+		 		
 		 	}
 		 });
 		
@@ -550,7 +575,7 @@ public class Juego extends JFrame {
 									barcoToca = "Fin";
 								}
 								if(barcoToca.equals("Fin")){
-									lblSeleccioneLasPosiciones.setText("EMPIEZA EL JUEGO");
+									lblSeleccioneLasPosiciones.setText("Dinero restante: " );
 									btnPrueba.setVisible(true);
 								}else{
 									lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);

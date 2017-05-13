@@ -6,11 +6,11 @@ import java.util.Iterator;
 
 public class Barco {
 	
-	private int longitud;
+	public int longitud;
 	private boolean escudo;
 	private String estado;
 	private int toques;
-	private ArrayList<Casilla> lista;
+	public ArrayList<Casilla> lista;
 	
 	public Barco(int length, ArrayList<Casilla> l){
 		toques=0;
@@ -122,8 +122,6 @@ public class Barco {
 	public boolean esta(int x, int y){
 		int a=0;
 		boolean esta=false;
-		System.out.println(lista.size());
-		System.out.println(longitud);
 		while(a<longitud && !esta){
 			
 			if(lista.get(a).getX()==x && lista.get(a).getY()==y){

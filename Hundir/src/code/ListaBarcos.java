@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class ListaBarcos {
 
-	private ArrayList<Barco> listaBarcos;
+	public ArrayList<Barco> listaBarcos;
 	
 	
 	public ListaBarcos(){
@@ -59,16 +59,14 @@ public class ListaBarcos {
 	}
 	
 	public ArrayList<Casilla> disparoNormal(int x, int y){
-		System.out.println("Disparo normal");
 		Barco a=null;
 		boolean esta=false;	
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();
 			if(a.esta(x, y)){
 				a.anadirToque(x,y);
-				System.out.println("disparoNomral");
 				lista.add(a.buscar(x, y));
 				esta=true;
 			}
@@ -83,7 +81,7 @@ public class ListaBarcos {
 		boolean esta=false;	
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();
 			if(a.esta(x, y)){
 				a.destruirBarco(x, y);

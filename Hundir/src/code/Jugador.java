@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Jugador {
 
-	private ListaBarcos listaBarcos;
+	public ListaBarcos listaBarcos;
 	private Armamento armamentoJug;
 	private boolean esOrdenador;
 	private Tablero t1;
@@ -177,7 +177,6 @@ public class Jugador {
 	
 	public ArrayList<Casilla> disparar(String tipo, int x, int y){
 		ArrayList<Casilla> m=new ArrayList<Casilla>();
-		System.out.println("dispararJugador");
 		if(tipo=="B" && armamentoJug.getBombas()!=0){
 			m=listaBarcos.disparoNormal(x, y);
 			armamentoJug.lanzarBomba();

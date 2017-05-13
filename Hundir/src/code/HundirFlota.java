@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class HundirFlota {
 	
-	private ArrayList<Jugador> listaJugadores;
+	public ArrayList<Jugador> listaJugadores;
 	private static HundirFlota miHundirFlota = new HundirFlota();
 	
 	private HundirFlota(){
@@ -102,8 +102,17 @@ public class HundirFlota {
 	}
 	
 	public ArrayList<Integer> disparar(String tipo, int x, int y){
+		
+		
+		System.out.println("--------------EL METODO DISPARAR------------");
+		for(int i = 0; i < 10 ;i++){
+			System.out.print(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
+			System.out.println(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());
+		}
+		
+		
+		
 		ArrayList<Integer> a=new ArrayList<Integer>();
-		System.out.println("disparar");
 		ArrayList<Casilla> c=listaJugadores.get(1).disparar(tipo, x, y);
 		Iterator<Casilla> itr=c.iterator();
 		Casilla casi;
