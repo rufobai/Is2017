@@ -65,10 +65,28 @@ public class Jugador {
 		boolean asignado=false;
 		Casilla m;
 		ArrayList<Casilla> l=new ArrayList<Casilla>();
-		if(cont==0 || cont==4 || cont==7 || cont==10 || cont==12 || cont==14 || cont==16 || cont==17 || cont ==18 || cont==19 ){
+		if(cont==0    ){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
 			anadirBarcoALista(new Barco(4, l));
+			cont=cont+1;
+			asignado=true;
+		}else if(cont==4|| cont==7){
+			m=t1.asignarBarco(x, y);
+			l.add(m);
+			anadirBarcoALista(new Barco(3, l));
+			cont=cont+1;
+			asignado=true;
+		}else if(cont==10 || cont==12 || cont==14){
+			m=t1.asignarBarco(x, y);
+			l.add(m);
+			anadirBarcoALista(new Barco(2, l));
+			cont=cont+1;
+			asignado=true;
+		}else if( cont==16 || cont==17 || cont ==18 || cont==19){
+			m=t1.asignarBarco(x, y);
+			l.add(m);
+			anadirBarcoALista(new Barco(2, l));
 			cont=cont+1;
 			asignado=true;
 		}else if(listaBarcos.getLista().get(listaBarcos.getLista().size()-1).anadirPosicion(x, y)==true){
