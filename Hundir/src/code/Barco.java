@@ -124,7 +124,7 @@ public class Barco {
 		boolean esta=false;
 		System.out.println(lista.size());
 		System.out.println(longitud);
-		while(a<=longitud-1 || esta){
+		while(a<longitud && !esta){
 			
 			if(lista.get(a).getX()==x && lista.get(a).getY()==y){
 				esta=true;
@@ -138,7 +138,7 @@ public class Barco {
 		int a=0;
 		boolean esta=false;
 		Casilla c=null;
-		while(a<=longitud-1 || esta){
+		while(a<=longitud-1 && !esta){
 			
 			if(lista.get(a).getX()==x && lista.get(a).getY()==y){
 				esta=true;

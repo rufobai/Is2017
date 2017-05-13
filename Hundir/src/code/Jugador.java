@@ -102,7 +102,6 @@ public class Jugador {
 		ArrayList<Casilla> e;
 		
 		e=t1.anadirBarco(4);
-		System.out.println(e.size());
 		anadirBarcoALista(new Barco(4, e));
 		e=t1.anadirBarco(3);
 		anadirBarcoALista(new Barco(3, e));
