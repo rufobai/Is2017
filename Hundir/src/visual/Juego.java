@@ -428,7 +428,8 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelTN.getText());
 								restantes = restantes - 1;
 								labelTN.setText(""+restantes);
-								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								
 								if(restantes == 0){
 									btnMt.setEnabled(false);
 									btnMt.setBackground(Color.GRAY);
@@ -440,7 +441,7 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelMOEN.getText());		
 								restantes = restantes - 1;
 								labelMOEN.setText(""+restantes);
-								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnMoe.setEnabled(false);
 									btnMoe.setBackground(Color.GRAY);
@@ -464,7 +465,7 @@ public class Juego extends JFrame {
 								restantes = restantes - 1;
 								System.out.println("Los restantes es= " + restantes);
 								labelMNSN.setText(""+restantes);
-								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnMns.setEnabled(false);
 									btnMns.setBackground(Color.GRAY);
@@ -475,7 +476,7 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelMN.getText());		
 								restantes = restantes - 1;
 								labelMN.setText(""+restantes);
-								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnM.setEnabled(false);
 									btnM.setBackground(Color.GRAY);
@@ -485,11 +486,17 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelBN.getText());		
 								restantes = restantes - 1;
 								labelBN.setText(""+restantes);
-								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnB.setEnabled(false);
 									btnB.setBackground(Color.GRAY);
 									tipoDisparo = "0";
+								}
+								
+								if(agua.size() == 0){
+									System.out.println("AGUA");
+								}else{
+									System.out.println("No agua");
 								}
 							}
 							}
