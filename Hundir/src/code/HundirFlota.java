@@ -1,6 +1,9 @@
 package code;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+
 
 public class HundirFlota {
 	
@@ -97,15 +100,24 @@ public class HundirFlota {
 		listaJugadores.get(0).darTablero(t1);
 	}
 	
-	public boolean disparar(String tipo, int x, int y){
-		
-		if(listaJugadores.get(1).disparar(tipo, x, y).size() == 0){
+	public ArrayList<Integer> disparar(String tipo, int x, int y){
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		ArrayList<Casilla> c=listaJugadores.get(1).disparar(tipo, x, y);
+		Iterator<Casilla> itr=c.iterator();
+		Casilla casi;
+		if(c.size() == 0){
 			asignarTaleros();
-			return false;
+			
 		}else{
+			while(itr.hasNext()){
+				casi=itr.next();
+				a.add(casi.getX());
+				a.add(casi.getY());
+			}
 			asignarTaleros();
-			return true;
+			
 		}
+		return a;
 	}
 	
 	public void disparaElOrdenador(){
