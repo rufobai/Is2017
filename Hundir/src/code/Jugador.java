@@ -171,7 +171,7 @@ public class Jugador {
 	public ArrayList<Casilla> radar(int x, int y){
 		
 		armamentoJug.lanzarRadar();
-		ArrayList<Casilla> r=t1.radar(x, y);
+		ArrayList<Casilla> r=t2.radar(x, y);
 		return r;
 	}
 	

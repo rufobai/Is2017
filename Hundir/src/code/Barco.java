@@ -50,12 +50,12 @@ public class Barco {
 			c=itr.next();
 			c1=itr.next();
 			if(c.getX()==c1.getX() && c.getX()==x){
-				if(y==c.getY()-1 || y==c1.getY()+1){
+				if(y==c.getY()-1 || y==c.getY()+1|| y==c1.getY()+1 || y==c1.getY()-1){
 					es=true;
 					
 				}
 			}else if(c.getY()==c1.getY() && c.getY()==y){
-				if(x==c.getX()-1 || x==c1.getX()+1){
+				if(x==c.getX()-1 || x==c1.getX()+1 || x==c.getX()+1 || x==c1.getX()-1){
 					es=true;
 				}
 			}
@@ -64,11 +64,11 @@ public class Barco {
 			c1=itr.next();
 			c2=itr.next();
 			if(c.getX()==c1.getX() && c.getX()==x){
-				if(y==c.getY()-1 || y==c2.getY()+1){
+				if(y==c.getY()-1 || y==c.getY()+1 || y==c2.getY()+1 || y==c2.getY()-1){
 					es=true;
 				}
 			}else if(c.getY()==c1.getY() && c.getY()==y){
-				if(x==c.getX()-1 || x==c2.getX()+1){
+				if(x==c.getX()-1 || x==c.getX()+1 || x==c2.getX()+1 || x==c2.getX()-1){
 					es=true;
 				}
 			}
