@@ -136,7 +136,7 @@ public class Juego extends JFrame {
 				labelTN.setText(""+ arma[5]);
 				//btnPrueba.setIcon(water);
 				//System.out.println("Cambio");
-				HundirFlota.getMiFlota().asignarBarcosJugador(listaPos);
+				//HundirFlota.getMiFlota().asignarBarcosJugador(listaPos);
 				estado = "Juego";
 			}
 		});
@@ -428,23 +428,34 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelTN.getText());
 								restantes = restantes - 1;
 								labelTN.setText(""+restantes);
-								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnMt.setEnabled(false);
 									btnMt.setBackground(Color.GRAY);
 									tipoDisparo = "0";
 								}
+								
 								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
 							}else if(tipoDisparo.equals("MOE")){
 								restantes = Integer.parseInt(labelMOEN.getText());		
 								restantes = restantes - 1;
 								labelMOEN.setText(""+restantes);
-								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnMoe.setEnabled(false);
 									btnMoe.setBackground(Color.GRAY);
 									tipoDisparo = "0";
 								}
+								
+								for (int k = 0; k < 20; k++) {
+									JButton b = (JButton) panelPc.getComponents()[k];
+									System.out.print("ORIGINAL X= " + b.getX() + " Y= " + b.getY());
+									b.setBackground(Color.PINK);
+									conver(b.getX(), b.getY());
+								}					
+																								
+								//JButton b2 = (JButton) panelPc
+								//b2.setBackground(Color.PINK);
 								
 								//PINTO TODAS LAS CASILLAS DE FILA
 							}else if(tipoDisparo.equals("MNS")){
@@ -453,7 +464,7 @@ public class Juego extends JFrame {
 								restantes = restantes - 1;
 								System.out.println("Los restantes es= " + restantes);
 								labelMNSN.setText(""+restantes);
-								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnMns.setEnabled(false);
 									btnMns.setBackground(Color.GRAY);
@@ -464,7 +475,7 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelMN.getText());		
 								restantes = restantes - 1;
 								labelMN.setText(""+restantes);
-								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnM.setEnabled(false);
 									btnM.setBackground(Color.GRAY);
@@ -474,7 +485,7 @@ public class Juego extends JFrame {
 								restantes = Integer.parseInt(labelBN.getText());		
 								restantes = restantes - 1;
 								labelBN.setText(""+restantes);
-								HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								boolean agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 								if(restantes == 0){
 									btnB.setEnabled(false);
 									btnB.setBackground(Color.GRAY);
@@ -484,10 +495,6 @@ public class Juego extends JFrame {
 							}
 						}
 						
-						/*ImageIcon ns = new ImageIcon("water.png");
-						button.setText("");
-						button.setIcon(water);
-						System.out.println("Cambio");*/
 					}
 				}
 					
@@ -516,114 +523,46 @@ public class Juego extends JFrame {
 						
 						if(estado.equals("Inicio")){
 							System.out.println("Entro ");
-							button.setEnabled(false);
-							button.setBackground(Color.ORANGE);
-							barcosInsert--;
-							System.out.println("BI: " + barcosInsert);
-							if(barcosInsert == 16){
-								System.out.println("Entra 2");
-								barcoToca = "Submarino";
-							}else if (barcosInsert == 10) {
-								barcoToca = "Destructor";
-							}else if (barcosInsert == 4) {
-								barcoToca = "Fragata";
-							}else if(barcosInsert == 0){
-								barcoToca = "Fin";
-							}
-							if(barcoToca.equals("Fin")){
-								lblSeleccioneLasPosiciones.setText("EMPIEZA EL JUEGO");
-								btnPrueba.setVisible(true);
+							
+							boolean cor = HundirFlota.getMiFlota().asignarBarcosJugador(lugar.gridx, lugar.gridy);
+							if (cor){
+								
+								button.setEnabled(false);
+								button.setBackground(Color.ORANGE);
+								barcosInsert--;
+								System.out.println("BI: " + barcosInsert);
+								
+								if(barcosInsert == 16){
+									System.out.println("Entra 2");
+									barcoToca = "Submarino";
+								}else if (barcosInsert == 10) {
+									barcoToca = "Destructor";
+								}else if (barcosInsert == 4) {
+									barcoToca = "Fragata";
+								}else if(barcosInsert == 0){
+									barcoToca = "Fin";
+								}
+								if(barcoToca.equals("Fin")){
+									lblSeleccioneLasPosiciones.setText("EMPIEZA EL JUEGO");
+									btnPrueba.setVisible(true);
+								}else{
+									lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);
+								}
 							}else{
-								lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);
+								System.out.println("Lugar incorrecto");
 							}
 							
-							listaPos.add(lugar.gridx);
-							listaPos.add(lugar.gridy);
+							
+							//listaPos.add(lugar.gridx);
+							//listaPos.add(lugar.gridy);
 							//resaltarPos(lugar.gridx, lugar.gridy);
-						}else if(radar){
-							/*if(btnR.isEnabled()){}
-							System.out.println("Llamada a radar 1");							
-							boolean hayBarcos = false;
-							hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar.gridx, lugar.gridy);
-							if(hayBarcos){
-								System.out.println("Llamada a radar 2");
-								ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar.gridx, lugar.gridy);
-								lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0).getX() + ", " +barcosCerca.get(0).getY());
-								 int restantes = Integer.parseInt(labelRN.getText());
-								restantes = restantes - 1;
-								labelTN.setText(""+restantes);
-								if(restantes == 0){
-									btnR.setEnabled(false);
-									btnR.setBackground(Color.GRAY);
-									radar = false;
-								}
-							}	*/
+						}else if(radar){							
 							System.out.println("RADAR EN ZONA ERRONEA");
 						}else{
-							/*
-							System.out.println("DISPARO EN: X= "+ lugar.gridx + " Y= " + lugar.gridy + " De tipo: " + tipoDisparo );
-							int restantes = 0;
-							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar.gridx, lugar.gridy);
-							if(tipoDisparo.equals("MT")){
-								restantes = Integer.parseInt(labelTN.getText());
-								restantes = restantes - 1;
-								labelTN.setText(""+restantes);
-								if(restantes == 0){
-									btnMt.setEnabled(false);
-									btnMt.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
-							}else if(tipoDisparo.equals("MOE")){
-								restantes = Integer.parseInt(labelMOEN.getText());		
-								restantes = restantes - 1;
-								labelMOEN.setText(""+restantes);
-								if(restantes == 0){
-									btnMoe.setEnabled(false);
-									btnMoe.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								
-								//PINTO TODAS LAS CASILLAS DE FILA
-							}else if(tipoDisparo.equals("MNS")){
-								System.out.println("Entra en MNS");
-								restantes = Integer.parseInt(labelMNSN.getText());		
-								restantes = restantes - 1;
-								System.out.println("Los restantes es= " + restantes);
-								labelMNSN.setText(""+restantes);
-								if(restantes == 0){
-									btnMns.setEnabled(false);
-									btnMns.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								//PINTO TODAS LAS CASILLAS DE COLUMNA
-							}else if(tipoDisparo.equals("M")){
-								restantes = Integer.parseInt(labelMN.getText());		
-								restantes = restantes - 1;
-								labelMN.setText(""+restantes);
-								if(restantes == 0){
-									btnM.setEnabled(false);
-									btnM.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-							}else if(tipoDisparo.equals("B")){
-								restantes = Integer.parseInt(labelBN.getText());		
-								restantes = restantes - 1;
-								labelBN.setText(""+restantes);
-								if(restantes == 0){
-									btnB.setEnabled(false);
-									btnB.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-							}
-							*/
+							
 							System.out.println("DISPARO EN ZONA ERRONEA");
 						}
 						
-						/*ImageIcon ns = new ImageIcon("water.png");
-						button.setText("");
-						button.setIcon(water);
-						System.out.println("Cambio");*/
 					}
 					
 				});
@@ -632,6 +571,19 @@ public class Juego extends JFrame {
 			}
 		}
 		
+	}
+	
+	private void conver(int x, int y){
+		if(x > 1){
+			x = x/44;
+		}else{
+			x = 0;
+		}
+		if(y > 1){
+			y = y /26;
+		}
+		
+		System.out.println("-----DESPUES: X=" + x + "Y= " + y);
 	}
 	
 	private void resaltarPos(int i, int j) {
