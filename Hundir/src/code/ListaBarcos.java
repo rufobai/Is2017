@@ -118,7 +118,9 @@ public class ListaBarcos {
 	public ArrayList<Casilla> disparoMNSOrdenador(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		for(int y1=0;y1==9;y1++){
+			
 			lista.addAll(disparoNormal(x, y1));
+			System.out.println("Ennnnnntra aqui"+lista.size());
 		}
 		return lista;
 	}
