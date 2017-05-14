@@ -22,11 +22,12 @@ public class HundirFlota {
 		
 		
 		listaJugadores.add(new Jugador(true));
-			if(posible()==true){
-				listaJugadores.remove(1);
-				listaJugadores.add(new Jugador(true));
-			}
-		
+		while (posible()==true) {
+			System.out.println("ENTRAAAAAAAAAAAA");
+			listaJugadores.remove(1);
+			listaJugadores.add(new Jugador(true));
+			
+		}
 		
 	}
 	
