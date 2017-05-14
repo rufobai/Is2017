@@ -297,15 +297,15 @@ public class Jugador {
 		int r=(int) (Math.random()*5+1);
 		System.out.println("EL RANDOM ES=" + r);
 		if(r==1){
-			return "ab";
+			return "MAB";
 		}else if(r==2){
-			return "ns";
+			return "MNS";
 		}else if(r==3){
-			return "oe";
+			return "MOE";
 		}else if(r==4){
-			return "misil";
+			return "M";
 		}else{
-			return "normal";
+			return "B";
 		}
 		
 	}

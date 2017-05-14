@@ -140,6 +140,95 @@ public class Tablero {
 		
 		
 	}
+	public ArrayList<Casilla> anadirPoortaviones(){
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
+		try{
+			int x=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + x);
+			int y=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + y);
+			int d=direccion();
+			int p1=x;
+			int p2=y;
+			if(tablero.get(p1).get(p2).getEstado()== true){
+				System.out.println("a entrado aui");
+				lista=anadirFragata();
+			}else{
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				m.cambiarEstado();
+			}
+			
+			System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
+			
+			
+		}catch(Exception e){
+			this.anadirFragata();
+		}
+		return lista;
+		
+		
+	}
+	public ArrayList<Casilla> anadirSubmarino(){
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
+		try{
+			int x=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + x);
+			int y=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + y);
+			int d=direccion();
+			int p1=x;
+			int p2=y;
+			if(tablero.get(p1).get(p2).getEstado()== true){
+				System.out.println("a entrado aui");
+				lista=anadirFragata();
+			}else{
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				m.cambiarEstado();
+			}
+			
+			System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
+			
+			
+		}catch(Exception e){
+			this.anadirFragata();
+		}
+		return lista;
+		
+		
+	}
+	public ArrayList<Casilla> anadirCrucero(){
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
+		try{
+			int x=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + x);
+			int y=(int) (Math.random()*9+1);
+			//System.out.println("coordenadada" + y);
+			int d=direccion();
+			int p1=x;
+			int p2=y;
+			if(tablero.get(p1).get(p2).getEstado()== true){
+				System.out.println("a entrado aui");
+				lista=anadirFragata();
+			}else{
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				m.cambiarEstado();
+			}
+			
+			System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
+			
+			
+		}catch(Exception e){
+			this.anadirFragata();
+		}
+		return lista;
+		
+		
+	}
+	
+	
 	
 
 	
