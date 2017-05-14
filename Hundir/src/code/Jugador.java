@@ -200,11 +200,15 @@ public class Jugador {
 			armamentoJug.anadirMisilNS();
 			dinero=dinero-20;
 			return true;
-		}else{
+		}else if(tipo=="MT"){
 			armamentoJug.anadirMisilAB();
 			dinero=dinero-20;
-			return true;
+			
+		}else{
+			armamentoJug.anadirRadar();
+			dinero=dinero-20;
 		}
+		return true;
 		
 	}
 	

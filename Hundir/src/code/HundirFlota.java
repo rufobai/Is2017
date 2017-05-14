@@ -19,9 +19,14 @@ public class HundirFlota {
 	
 	public void empezarPartida(){
 		listaJugadores.add(new Jugador(false));
-		for(int z=0;z<=100-1;z++){
-			listaJugadores.add(new Jugador(true));
-		}
+		
+		
+		listaJugadores.add(new Jugador(true));
+			if(posible()==true){
+				listaJugadores.remove(1);
+				listaJugadores.add(new Jugador(true));
+			}
+		
 		
 	}
 	
@@ -172,6 +177,28 @@ public class HundirFlota {
 	
 	public boolean darEscudo(int x, int y){
 		return listaJugadores.get(0).activarEscudo(x, y);
+	}
+	public boolean posible(){
+		ArrayList<Integer> l=new ArrayList<Integer>();
+		for(int i = 0; i < 10 ;i++){
+			
+			l.add(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
+			l.add(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());
+			
+		}
+		
+		
+		int a,b;
+		Iterator<Integer> itr=l.iterator();
+		boolean p=false;
+		while (itr.hasNext()){
+			a=itr.next();
+			b=itr.next();
+			if(a!=b){
+				p=true;
+			}
+		}
+		return p;
 	}
 	
 	
