@@ -92,11 +92,12 @@ public class ListaBarcos {
 		}
 		return lista;	
 	}
-	public ArrayList<Casilla> disparoMOE(int x, int y){
+	public ArrayList<Integer> disparoMOE(int x, int y){
 		
-		ArrayList<Casilla> lista= new ArrayList<Casilla>();
+		ArrayList<Integer> lista= new ArrayList<Integer>();
 		for(int x1=0;x1<9;x1++){
-			lista.addAll(disparoMisil(x1, y));
+			lista.add(x1);
+			lista.add(y);
 		}
 		return lista;	
 	}
@@ -108,10 +109,13 @@ public class ListaBarcos {
 		}
 		return lista;	
 	}
-	public ArrayList<Casilla> disparoMNS(int x, int y){
-		ArrayList<Casilla> lista= new ArrayList<Casilla>();
+	public ArrayList<Integer> disparoMNS(int x, int y){
+		ArrayList<Integer> lista= new ArrayList<Integer>();
 		for(int y1=0;y1<9;y1++){
-			lista.addAll(disparoMisil(x, y1));
+			lista.add(x);
+			lista.add(y1);
+			
+			
 		}
 		return lista;
 	}
@@ -124,18 +128,18 @@ public class ListaBarcos {
 		}
 		return lista;
 	}
-	public ArrayList<Casilla> disparoMT(int x, int y){
+	/*public ArrayList<Casilla> disparoMT(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		lista.addAll(disparoMOE(x, y));
 		lista.addAll(disparoMNS(x, y));
 		return lista;
-	}
-	public ArrayList<Casilla> disparoMTOrdenador(int x, int y){
+	}*/
+	/*public ArrayList<Casilla> disparoMTOrdenador(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		lista.addAll(disparoMOE(x, y));
 		lista.addAll(disparoMNS(x, y));
 		return lista;
-	}
+	}*/
 	public void reparar(int x, int y){
 		
 		Barco a=null;

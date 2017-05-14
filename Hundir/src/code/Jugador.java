@@ -231,13 +231,10 @@ public class Jugador {
 		
 	}
 	
-	public ArrayList<Casilla> disparar(String tipo, int x, int y){
-		ArrayList<Casilla> m=new ArrayList<Casilla>();
-		if(tipo=="B" && armamentoJug.getBombas()!=0){
-			m=listaBarcos.disparoNormal(x, y);
-			armamentoJug.lanzarBomba();
-		}else if(tipo=="M" && armamentoJug.getMisiles()!=0){
-			m=listaBarcos.disparoMisil(x, y);
+	public ArrayList<Integer> disparar(String tipo, int x, int y){
+		ArrayList<Integer> m=new ArrayList<Integer>();
+		if(tipo=="M" && armamentoJug.getMisiles()!=0){
+			//m=listaBarcos.disparoMisil(x, y);
 			armamentoJug.lanzarMisil();
 		}else if(tipo=="MOE" && armamentoJug.getMisilOE()!=0){
 			m=listaBarcos.disparoMOE(x, y);
@@ -246,7 +243,8 @@ public class Jugador {
 			m=listaBarcos.disparoMNS(x, y);
 			armamentoJug.lanzarMisilNS();
 		}else{
-			m=listaBarcos.disparoMT(x, y);
+			m=listaBarcos.disparoMNS(x, y);
+			m.addAll(listaBarcos.disparoMOE(x, y));
 			armamentoJug.lanzarMisilAB();
 		}
 		return m;
@@ -313,7 +311,7 @@ public class Jugador {
 			return "MNS";
 		}else if(r==3){
 			return "MOE";
-		}else if(r==4){
+		}else if(r==6){
 			return "M";
 		}else{
 			return "B";
