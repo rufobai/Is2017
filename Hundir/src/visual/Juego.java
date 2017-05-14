@@ -775,7 +775,12 @@ public class Juego extends JFrame {
 				if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
 					//System.out.println("La comparacion es X= " +donde.get(0) + " == " + donde2.get(0));
 					//System.out.println("La comparacion es Y= " +donde.get(1) + " == " + donde2.get(1));
-					b.setBackground(Color.RED);
+					if(b.getBackground() == Color.ORANGE){
+						b.setBackground(Color.RED);
+					}else{
+						b.setBackground(Color.BLUE);
+					}
+					
 				}
 			}	
 		}
