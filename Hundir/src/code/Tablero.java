@@ -114,15 +114,15 @@ public class Tablero {
 		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		try{
 			int x=(int) (Math.random()*9+1);
-			////System.out.println("coordenadada" + x);
+			//System.out.println("coordenadada" + x);
 			int y=(int) (Math.random()*9+1);
-			////System.out.println("coordenadada" + y);
+			//System.out.println("coordenadada" + y);
 			int d=direccion();
 			int p1=x;
 			int p2=y;
 			Casilla m=tablero.get(p1).get(p2);
 			lista.add(m);
-			////System.out.println("esta en la pos" + p1 +p2);
+			//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 			m.cambiarEstado();
 			
 		}catch(Exception e){
@@ -134,6 +134,7 @@ public class Tablero {
 	}
 	
 	public ArrayList<Casilla> anadirBarco(int length){
+		//System.out.println("Anadir Barco: " + length);
 		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		try{
 		int x=(int) (Math.random()*9+1);
@@ -150,7 +151,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p2=p2-1;
 			}
@@ -159,7 +160,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p2++;
 			}
@@ -173,7 +174,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p1++;
 			}
@@ -181,7 +182,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p1=p1-1;
 			}
@@ -198,7 +199,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p1=p1-1;
 			}
@@ -207,7 +208,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p1++;
 			}
@@ -215,7 +216,7 @@ public class Tablero {
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p1=p1-1;
 			}
@@ -224,7 +225,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p2++;
 			}
@@ -233,7 +234,7 @@ public class Tablero {
 
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
+				//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 				m.cambiarEstado();
 				p2=p2-1;
 			}
@@ -243,7 +244,7 @@ public class Tablero {
 
 					Casilla m=tablero.get(p1).get(p2);
 					lista.add(m);
-					//System.out.println("esta en la pos" + p1 +p2);
+					//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 					m.cambiarEstado();
 					p2++;
 				}
@@ -253,7 +254,7 @@ public class Tablero {
 
 					Casilla m=tablero.get(p1).get(p2);
 					lista.add(m);
-					//System.out.println("esta en la pos" + p1 +p2);
+					//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 					m.cambiarEstado();
 					p1++;
 				}
@@ -262,7 +263,7 @@ public class Tablero {
 
 					Casilla m=tablero.get(p1).get(p2);
 					lista.add(m);
-					//System.out.println("esta en la pos" + p1 +p2);
+					//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 					m.cambiarEstado();
 					p2=p2-1;
 				}
@@ -270,7 +271,7 @@ public class Tablero {
 				for(int z=0;z<=length-1;z++){
 					Casilla m=tablero.get(p1).get(p2);
 					lista.add(m);
-					//System.out.println("esta en la pos" + p1 +p2);
+					//System.out.println("esta en la pos X: " + p1 + " Y: "+p2);
 					m.cambiarEstado();
 					p1=p1-1;
 				}
@@ -278,10 +279,13 @@ public class Tablero {
 				
 				
 			}
+				
 		}
 		}catch(Exception e){
+			System.out.println("CATH");
 			this.anadirBarco(length);
 		}
+		
 		return lista;
 		
 	}

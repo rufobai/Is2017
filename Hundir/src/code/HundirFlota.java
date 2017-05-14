@@ -63,6 +63,7 @@ public class HundirFlota {
 		return arma;
 	}
 	public boolean hayBarcosJugador(int x, int y){
+		System.out.println("X, Y= " + x +" "+ y);
 		boolean hay=false;
 		if(listaJugadores.get(0).esOrdenador()== true){
 			hay=listaJugadores.get(1).hayBarcos(x, y);
@@ -114,7 +115,7 @@ public class HundirFlota {
 	public ArrayList<Integer> disparar(String tipo, int x, int y){
 		
 		
-		System.out.println("--------------EL METODO DISPARAR------------");
+		System.out.println("--------------EL METODO DISPARAR------------RECIBE: X= " + x + "Y= " + y);
 		for(int i = 0; i < 10 ;i++){
 			System.out.print(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
 			System.out.println(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());

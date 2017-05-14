@@ -20,7 +20,7 @@ public class ListaBarcos {
 		Barco a;
 		boolean esta=false;
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();
 			if(a.esta(x, y)){
 				a.activarEscudo();
@@ -33,7 +33,7 @@ public class ListaBarcos {
 		Barco a;
 		boolean esta=false;		
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();			
 			if(a.esta(x, y)){
 				esta=true;
@@ -45,7 +45,7 @@ public class ListaBarcos {
 		Barco a=null;
 		boolean esta=false;		
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();
 			if(a.esta(x, y)){
 				esta=true;
@@ -117,7 +117,7 @@ public class ListaBarcos {
 		Barco a=null;
 		boolean esta=false;		
 		Iterator<Barco> it=listaBarcos.iterator();
-		while(it.hasNext() || esta==true){
+		while(it.hasNext() && !esta){
 			a=it.next();
 			if(a.esta(x, y)){
 				a.reparar(x, y);

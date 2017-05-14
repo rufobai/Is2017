@@ -168,8 +168,8 @@ public class Jugador {
 		int x1=x-1;
 		int y1=y-1;
 		
-		while(x1!=x+1||hay){
-			while(y1!=y+1||hay){
+		while(x1!=x+1&&!hay){
+			while(y1!=y+1&&!hay){
 				hay=listaBarcos.existeBarco(x1, y1);
 				y1++;;
 			}

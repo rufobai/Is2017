@@ -53,6 +53,7 @@ public class Juego extends JFrame {
 	private JLabel labelRN;
 	private boolean radar;
 	private String tipoDisparo;
+	private int nToques = 0;
 
 	/**
 	 * Launch the application.
@@ -178,6 +179,15 @@ public class Juego extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					boolean com = HundirFlota.getMiFlota().comprar("M");
+					if(!com){
+						lblSeleccioneLasPosiciones.setText("Dinero insuficiente: " + HundirFlota.getMiFlota().dineroJugador());
+					}else{
+						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
+						int n = Integer.parseInt(labelMN.getText())  + 1;
+						labelMN.setText("" + n);
+					}
+					
 					System.out.println("DERECHO");
 				}else{
 					if(btnM.isEnabled()){	
@@ -205,6 +215,15 @@ public class Juego extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					boolean com = HundirFlota.getMiFlota().comprar("MNS");
+					if(!com){
+						lblSeleccioneLasPosiciones.setText("Dinero insuficiente: " + HundirFlota.getMiFlota().dineroJugador());
+					}else{
+						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
+						int n = Integer.parseInt(labelMNSN.getText())  + 1;
+						labelMNSN.setText("" + n);
+					}
+					
 					System.out.println("DERECHO");
 				}else{
 					if(btnMns.isEnabled()){	
@@ -232,6 +251,15 @@ public class Juego extends JFrame {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
 		 		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+		 			boolean com = HundirFlota.getMiFlota().comprar("MOE");
+					if(!com){
+						lblSeleccioneLasPosiciones.setText("Dinero insuficiente: " + HundirFlota.getMiFlota().dineroJugador());
+					}else{
+						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
+						int n = Integer.parseInt(labelMOEN.getText())  + 1;
+						labelMOEN.setText("" + n);
+					}
+					
 					System.out.println("DERECHO");
 				}else{
 					if(btnMoe.isEnabled()){		 	
@@ -254,6 +282,15 @@ public class Juego extends JFrame {
 		 	@Override
 		 	public void mouseClicked(MouseEvent e) {
 		 		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+		 			boolean com = HundirFlota.getMiFlota().comprar("MT");
+					if(!com){
+						lblSeleccioneLasPosiciones.setText("Dinero insuficiente: " + HundirFlota.getMiFlota().dineroJugador());
+					}else{
+						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
+						int n = Integer.parseInt(labelTN.getText())  + 1;
+						labelTN.setText("" + n);
+					}
+					
 					System.out.println("DERECHO");
 				}else{
 					if(btnMt.isEnabled()){	
@@ -281,6 +318,15 @@ public class Juego extends JFrame {
 			@Override
 		 	public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == java.awt.event.MouseEvent.BUTTON3){
+					boolean com = HundirFlota.getMiFlota().comprar("radar");
+					if(!com){
+						lblSeleccioneLasPosiciones.setText("Dinero insuficiente: " + HundirFlota.getMiFlota().dineroJugador());
+					}else{
+						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
+						int n = Integer.parseInt(labelRN.getText())  + 1;
+						labelRN.setText("" + n);
+					}
+					
 					System.out.println("DERECHO");
 				}else{
 					radar = !radar;
@@ -428,6 +474,7 @@ public class Juego extends JFrame {
 								System.out.println("Llamada a radar 1");							
 								boolean hayBarcos = false;
 								hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar2.gridx, lugar2.gridy);
+								System.out.println("RADAR = " +hayBarcos);
 								if(hayBarcos){
 									System.out.println("Llamada a radar 2");
 									ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar2.gridx, lugar2.gridy);
@@ -448,7 +495,7 @@ public class Juego extends JFrame {
 							
 							System.out.println("DISPARO EN: X= "+ lugar2.gridx + " Y= " + lugar2.gridy + " De tipo: " + tipoDisparo );
 							int restantes = 0;
-							HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 							if(tipoDisparo.equals("MT")){
 								restantes = Integer.parseInt(labelTN.getText());
 								restantes = restantes - 1;
@@ -519,8 +566,14 @@ public class Juego extends JFrame {
 								}
 								
 								if(agua.size() == 0){
+									button.setEnabled(false);
+									button.setBackground(Color.BLUE);
 									System.out.println("AGUA");
+									
 								}else{
+									button.setEnabled(false);
+									button.setBackground(Color.GREEN);
+									nToques = nToques + 1;
 									System.out.println("No agua");
 								}
 							}
@@ -575,7 +628,7 @@ public class Juego extends JFrame {
 									barcoToca = "Fin";
 								}
 								if(barcoToca.equals("Fin")){
-									lblSeleccioneLasPosiciones.setText("Dinero restante: " );
+									lblSeleccioneLasPosiciones.setText("Dinero restante: " + HundirFlota.getMiFlota().dineroJugador());
 									btnPrueba.setVisible(true);
 								}else{
 									lblSeleccioneLasPosiciones.setText("SELECCIONE LA POSICION DE " + barcoToca);
