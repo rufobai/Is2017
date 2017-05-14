@@ -117,13 +117,11 @@ public class HundirFlota {
 	public ArrayList<Integer> disparar(String tipo, int x, int y){
 		
 		
-		System.out.println("--------------EL METODO DISPARAR------------RECIBE: X= " + x + "Y= " + y);
-		for(int i = 0; i < 10 ;i++){
+		System.out.println("--------------EL METODO DISPARAR------------RECIBE: X= " + x + "Y= " + y + "TIPO" + tipo);
+		/*for(int i = 0; i < 10 ;i++){
 			System.out.print(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
 			System.out.println(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());
-		}
-		
-		
+		}*/
 		
 		ArrayList<Integer> a=new ArrayList<Integer>();
 		ArrayList<Casilla> c=listaJugadores.get(1).dispararO(tipo, x, y);
@@ -151,7 +149,7 @@ public class HundirFlota {
 		String tipo=listaJugadores.get(1).tipoDisparo();
 		System.out.println("TIPO DE DISPARO= " + tipo);
 		
-		ArrayList<Casilla> c=listaJugadores.get(0).dispararO(tipo, a.get(0), a.get(1));
+		ArrayList<Casilla> c=listaJugadores.get(0).dispararO("B", a.get(0), a.get(1));
 		Iterator<Casilla> itr=c.iterator();
 		Casilla casi;
 		

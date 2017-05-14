@@ -95,7 +95,7 @@ public class ListaBarcos {
 	public ArrayList<Casilla> disparoMOE(int x, int y){
 		
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
-		for(int x1=0;x1==9;x1++){
+		for(int x1=0;x1<9;x1++){
 			lista.addAll(disparoMisil(x1, y));
 		}
 		return lista;	
@@ -103,21 +103,21 @@ public class ListaBarcos {
 	public ArrayList<Casilla> disparoMOEOrdenador(int x, int y){
 		
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
-		for(int x1=0;x1==9;x1++){
+		for(int x1=0;x1<9;x1++){
 			lista.addAll(disparoNormal(x1, y));
 		}
 		return lista;	
 	}
 	public ArrayList<Casilla> disparoMNS(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
-		for(int y1=0;y1==9;y1++){
+		for(int y1=0;y1<9;y1++){
 			lista.addAll(disparoMisil(x, y1));
 		}
 		return lista;
 	}
 	public ArrayList<Casilla> disparoMNSOrdenador(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
-		for(int y1=0;y1==9;y1++){
+		for(int y1=0;y1<9;y1++){
 			
 			lista.addAll(disparoNormal(x, y1));
 			System.out.println("Ennnnnntra aqui"+lista.size());

@@ -253,21 +253,29 @@ public class Jugador {
 	}
 	
 	public ArrayList<Casilla> dispararO(String tipo, int x, int y){
+		System.out.println("--------------EL METODO DISPARAR----000000000----RECIBE: X= " + x + "Y= " + y + "TIPO" + tipo);
 		ArrayList<Casilla> m=new ArrayList<Casilla>();
 		if(tipo=="B" && armamentoJug.getBombas()!=0){
+			System.out.println("EL METODO DISPARAR----000000000 BOM" );
 			m=listaBarcos.disparoNormal(x, y);
 			armamentoJug.lanzarBomba();
 		}else if(tipo=="M" && armamentoJug.getMisiles()!=0){
+			System.out.println("EL METODO DISPARAR----000000000 MIS" );
 			m=listaBarcos.disparoMisil(x, y);
 			armamentoJug.lanzarMisil();
 		}else if(tipo=="MOE" && armamentoJug.getMisilOE()!=0){
+			System.out.println("EL METODO DISPARAR----000000000 MOE" );
 			m=listaBarcos.disparoMOEOrdenador(x, y);
 			armamentoJug.lanzarMisilOE();
 		}else if(tipo=="MNS" && armamentoJug.getMisilNS()!=0){
+			System.out.println("EL METODO DISPARAR----000000000 MNS" );
 			m=listaBarcos.disparoMNSOrdenador(x, y);
 			armamentoJug.lanzarMisilNS();
 		}else{
-			m=listaBarcos.disparoMTOrdenador(x, y);
+			System.out.println("EL METODO DISPARAR----000000000 MISILTOTAL" );
+			m=listaBarcos.disparoMNSOrdenador(x, y);
+			m.addAll(listaBarcos.disparoMOEOrdenador(x, y));
+			//m=listaBarcos.disparoMTOrdenador(x, y);
 			armamentoJug.lanzarMisilAB();
 		}
 		

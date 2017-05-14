@@ -692,6 +692,15 @@ public class Juego extends JFrame {
 						b.setBackground(Color.BLUE);
 					}
 				}
+				else if(tipo.equals("M")){
+					if(x == donde2.get(0) && y == donde2.get(1)){
+						b.setBackground(Color.BLUE);
+					}
+				}else if(tipo.equals("B")){
+					if(x == donde2.get(0) && y == donde2.get(1)){
+						b.setBackground(Color.BLUE);
+					}
+				}
 			}
 		}else{
 			System.out.println("ACIERTA");
@@ -711,8 +720,6 @@ public class Juego extends JFrame {
 					}else if(tipo.equals("M")){
 						if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
 							b.setBackground(Color.GREEN);
-						}else{
-							b.setBackground(Color.BLUE);
 						}
 					}else if(tipo.equals("MOE")){
 						if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
@@ -729,8 +736,6 @@ public class Juego extends JFrame {
 					}else if(tipo.equals("B")){
 						if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
 							b.setBackground(Color.GREEN);
-						}else{
-							b.setBackground(Color.BLUE);
 						}
 					}
 				}	
