@@ -110,6 +110,29 @@ public class Tablero {
 		return m;
 	}
 	
+	public ArrayList<Casilla> anadirFragata(){
+		ArrayList<Casilla> lista=new ArrayList<Casilla>();
+		try{
+			int x=(int) (Math.random()*9+1);
+			////System.out.println("coordenadada" + x);
+			int y=(int) (Math.random()*9+1);
+			////System.out.println("coordenadada" + y);
+			int d=direccion();
+			int p1=x;
+			int p2=y;
+			Casilla m=tablero.get(p1).get(p2);
+			lista.add(m);
+			////System.out.println("esta en la pos" + p1 +p2);
+			m.cambiarEstado();
+			
+		}catch(Exception e){
+			this.anadirFragata();
+		}
+		return lista;
+		
+		
+	}
+	
 	public ArrayList<Casilla> anadirBarco(int length){
 		ArrayList<Casilla> lista=new ArrayList<Casilla>();
 		try{
@@ -121,37 +144,8 @@ public class Tablero {
 		int p1=x;
 		int p2=y;
 		
-		if(p1==9){
-			
-		}
 		
-		
-		
-		
-		
-		
-		
-		
-		if(d==1){
-			for(int z=0;z<=length-1;z++){
-
-				Casilla m=tablero.get(p1).get(p2);
-				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
-				m.cambiarEstado();
-				p2++;
-			}
-			
-		}else if(d==2){
-			for(int z=0;z<=length-1;z++){
-
-				Casilla m=tablero.get(p1).get(p2);
-				lista.add(m);
-				//System.out.println("esta en la pos" + p1 +p2);
-				m.cambiarEstado();
-				p1++;
-			}
-		}else if(d==3){
+		if(length==4 && p2>5 || length==3 && p2>6 || length==2 && p2>7){
 			for(int z=0;z<=length-1;z++){
 
 				Casilla m=tablero.get(p1).get(p2);
@@ -160,7 +154,30 @@ public class Tablero {
 				m.cambiarEstado();
 				p2=p2-1;
 			}
-		}else{
+		}else if(length==4 && p2<3 || length==3 && p2<2 || length==2 && p2<1){
+			for(int z=0;z<=length-1;z++){
+
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p2++;
+			}
+		}
+		
+		
+		
+		
+		else if(p1==9 && p2==0 ){
+			for(int z=0;z<=length-1;z++){
+
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p1++;
+			}
+		}else if(p1==9 && p2==9  ){
 			for(int z=0;z<=length-1;z++){
 				Casilla m=tablero.get(p1).get(p2);
 				lista.add(m);
@@ -168,9 +185,99 @@ public class Tablero {
 				m.cambiarEstado();
 				p1=p1-1;
 			}
+		}else if(p1==0 && p2==0){
+			for(int z=0;z<=length-1;z++){
 
-			
-			
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p1++;
+			}
+		}else if(p1==0 && p2==9){
+			for(int z=0;z<=length-1;z++){
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p1=p1-1;
+			}
+		}else if(p1==0){
+			for(int z=0;z<=length-1;z++){
+
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p1++;
+			}
+		}else if(p1==9){
+			for(int z=0;z<=length-1;z++){
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p1=p1-1;
+			}
+		}else if(p2==0){
+			for(int z=0;z<=length-1;z++){
+
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p2++;
+			}
+		}else if(p2==9){
+			for(int z=0;z<=length-1;z++){
+
+				Casilla m=tablero.get(p1).get(p2);
+				lista.add(m);
+				//System.out.println("esta en la pos" + p1 +p2);
+				m.cambiarEstado();
+				p2=p2-1;
+			}
+		}else {
+			if(d==1){
+				for(int z=0;z<=length-1;z++){
+
+					Casilla m=tablero.get(p1).get(p2);
+					lista.add(m);
+					//System.out.println("esta en la pos" + p1 +p2);
+					m.cambiarEstado();
+					p2++;
+				}
+				
+			}else if(d==2){
+				for(int z=0;z<=length-1;z++){
+
+					Casilla m=tablero.get(p1).get(p2);
+					lista.add(m);
+					//System.out.println("esta en la pos" + p1 +p2);
+					m.cambiarEstado();
+					p1++;
+				}
+			}else if(d==3){
+				for(int z=0;z<=length-1;z++){
+
+					Casilla m=tablero.get(p1).get(p2);
+					lista.add(m);
+					//System.out.println("esta en la pos" + p1 +p2);
+					m.cambiarEstado();
+					p2=p2-1;
+				}
+			}else{
+				for(int z=0;z<=length-1;z++){
+					Casilla m=tablero.get(p1).get(p2);
+					lista.add(m);
+					//System.out.println("esta en la pos" + p1 +p2);
+					m.cambiarEstado();
+					p1=p1-1;
+				}
+
+				
+				
+			}
 		}
 		}catch(Exception e){
 			this.anadirBarco(length);
@@ -200,7 +307,7 @@ public class Tablero {
 		for(int z=0;z<=9;z++){
 			for(int x=0;x<=9;x++){
 				Casilla m=tablero.get(z).get(x);
-				System.out.println(m.getEstado());
+				//System.out.println(m.getEstado());
 			}
 		}
 	}

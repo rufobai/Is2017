@@ -19,7 +19,10 @@ public class HundirFlota {
 	
 	public void empezarPartida(){
 		listaJugadores.add(new Jugador(false));
-		listaJugadores.add(new Jugador(true));
+		for(int z=0;z<=100-1;z++){
+			listaJugadores.add(new Jugador(true));
+		}
+		
 	}
 	
 	public static HundirFlota getMiFlota(){

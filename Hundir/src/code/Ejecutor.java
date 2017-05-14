@@ -16,10 +16,15 @@ public class Ejecutor {
 		System.out.println("  ");
 		System.out.println("  ");
 		System.out.println("  ");
-		for(int i = 0; i < 10 ;i++){
-			System.out.print(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
-			System.out.println(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());
+		for(int a = 1; a < 100 ;a++){
+			for(int i = 0; i < 10 ;i++){
+				System.out.print(HundirFlota.getMiFlota().listaJugadores.get(a).listaBarcos.listaBarcos.get(i).longitud);
+				System.out.println(HundirFlota.getMiFlota().listaJugadores.get(a).listaBarcos.listaBarcos.get(i).lista.size());
+				
+			}
+			System.out.println("siguiente");
 		}
+		
 		
 		
 

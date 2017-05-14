@@ -122,13 +122,13 @@ public class Jugador {
 		anadirBarcoALista(new Barco(2, e));
 		e=t1.anadirBarco(2);
 		anadirBarcoALista(new Barco(2, e));
-		e=t1.anadirBarco(1);
+		e=t1.anadirFragata();
 		anadirBarcoALista(new Barco(1, e));
-		e=t1.anadirBarco(1);
+		e=t1.anadirFragata();
 		anadirBarcoALista(new Barco(1, e));
-		e=t1.anadirBarco(1);
+		e=t1.anadirFragata();
 		anadirBarcoALista(new Barco(1, e));
-		e=t1.anadirBarco(1);
+		e=t1.anadirFragata();
 		anadirBarcoALista(new Barco(1, e));
 		
 	}
