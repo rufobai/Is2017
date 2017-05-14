@@ -58,6 +58,7 @@ public class ListaBarcos {
 		listaBarcos.add(b);
 	}
 	
+	
 	public ArrayList<Casilla> disparoNormal(int x, int y){
 		Barco a=null;
 		boolean esta=false;	
@@ -99,6 +100,14 @@ public class ListaBarcos {
 		}
 		return lista;	
 	}
+	public ArrayList<Casilla> disparoMOEOrdenador(int x, int y){
+		
+		ArrayList<Casilla> lista= new ArrayList<Casilla>();
+		for(int x1=0;x1==9;x1++){
+			lista.addAll(disparoNormal(x1, y));
+		}
+		return lista;	
+	}
 	public ArrayList<Casilla> disparoMNS(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		for(int y1=0;y1==9;y1++){
@@ -106,7 +115,20 @@ public class ListaBarcos {
 		}
 		return lista;
 	}
+	public ArrayList<Casilla> disparoMNSOrdenador(int x, int y){
+		ArrayList<Casilla> lista= new ArrayList<Casilla>();
+		for(int y1=0;y1==9;y1++){
+			lista.addAll(disparoNormal(x, y1));
+		}
+		return lista;
+	}
 	public ArrayList<Casilla> disparoMT(int x, int y){
+		ArrayList<Casilla> lista= new ArrayList<Casilla>();
+		lista.addAll(disparoMOE(x, y));
+		lista.addAll(disparoMNS(x, y));
+		return lista;
+	}
+	public ArrayList<Casilla> disparoMTOrdenador(int x, int y){
 		ArrayList<Casilla> lista= new ArrayList<Casilla>();
 		lista.addAll(disparoMOE(x, y));
 		lista.addAll(disparoMNS(x, y));

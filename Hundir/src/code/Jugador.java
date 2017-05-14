@@ -1,6 +1,7 @@
 package code;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Jugador {
@@ -133,6 +134,21 @@ public class Jugador {
 		
 	}
 	
+	public void comprobarBarco(ArrayList<Casilla> e){
+		boolean es=false;
+		for(int f=0;f==e.size();f++){
+			for(int a=0; a==listaBarcos.getLista().size();a++){
+				if(listaBarcos.getLista().get(a).esta(e.get(f).getX(), e.get(f).getY())==true){
+					es=true;
+				}
+				
+				
+			}
+		}
+		
+		
+	}
+	
 
 	public Integer getRadar() {
 		// TODO Auto-generated method stub
@@ -230,6 +246,28 @@ public class Jugador {
 			m=listaBarcos.disparoMT(x, y);
 			armamentoJug.lanzarMisilAB();
 		}
+		return m;
+	}
+	
+	public ArrayList<Casilla> dispararO(String tipo, int x, int y){
+		ArrayList<Casilla> m=new ArrayList<Casilla>();
+		if(tipo=="B" && armamentoJug.getBombas()!=0){
+			m=listaBarcos.disparoNormal(x, y);
+			armamentoJug.lanzarBomba();
+		}else if(tipo=="M" && armamentoJug.getMisiles()!=0){
+			m=listaBarcos.disparoMisil(x, y);
+			armamentoJug.lanzarMisil();
+		}else if(tipo=="MOE" && armamentoJug.getMisilOE()!=0){
+			m=listaBarcos.disparoMOEOrdenador(x, y);
+			armamentoJug.lanzarMisilOE();
+		}else if(tipo=="MNS" && armamentoJug.getMisilNS()!=0){
+			m=listaBarcos.disparoMNSOrdenador(x, y);
+			armamentoJug.lanzarMisilNS();
+		}else{
+			m=listaBarcos.disparoMTOrdenador(x, y);
+			armamentoJug.lanzarMisilAB();
+		}
+		
 		return m;
 	}
 	

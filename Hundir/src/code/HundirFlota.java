@@ -149,7 +149,7 @@ public class HundirFlota {
 		String tipo=listaJugadores.get(1).tipoDisparo();
 		System.out.println("TIPO DE DISPARO= " + tipo);
 		
-		ArrayList<Casilla> c=listaJugadores.get(0).disparar(tipo, a.get(0), a.get(1));
+		ArrayList<Casilla> c=listaJugadores.get(0).dispararO(tipo, a.get(0), a.get(1));
 		Iterator<Casilla> itr=c.iterator();
 		Casilla casi;
 		
