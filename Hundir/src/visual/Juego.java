@@ -54,6 +54,7 @@ public class Juego extends JFrame {
 	private boolean radar;
 	private String tipoDisparo;
 	private int nToques = 0;
+	private JPanel panelPc;
 
 	/**
 	 * Launch the application.
@@ -89,7 +90,7 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		ArrayList<Button> listaDes = new ArrayList<Button>();
 		
-		JPanel panelPc = new JPanel();
+		panelPc = new JPanel();
 		contentPane.add(panelPc, BorderLayout.NORTH);
 		GridBagLayout gbl_panelPc = new GridBagLayout();
 		gbl_panelPc.columnWidths = new int[]{0};
@@ -185,6 +186,7 @@ public class Juego extends JFrame {
 					}else{
 						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
 						int n = Integer.parseInt(labelMN.getText())  + 1;
+						btnM.setEnabled(true);
 						labelMN.setText("" + n);
 					}
 					
@@ -221,6 +223,7 @@ public class Juego extends JFrame {
 					}else{
 						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
 						int n = Integer.parseInt(labelMNSN.getText())  + 1;
+						btnMns.setEnabled(true);
 						labelMNSN.setText("" + n);
 					}
 					
@@ -257,6 +260,7 @@ public class Juego extends JFrame {
 					}else{
 						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
 						int n = Integer.parseInt(labelMOEN.getText())  + 1;
+						btnMoe.setEnabled(true);
 						labelMOEN.setText("" + n);
 					}
 					
@@ -288,6 +292,7 @@ public class Juego extends JFrame {
 					}else{
 						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
 						int n = Integer.parseInt(labelTN.getText())  + 1;
+						btnMt.setEnabled(true);
 						labelTN.setText("" + n);
 					}
 					
@@ -324,6 +329,7 @@ public class Juego extends JFrame {
 					}else{
 						lblSeleccioneLasPosiciones.setText("Dinero restante" + HundirFlota.getMiFlota().dineroJugador());
 						int n = Integer.parseInt(labelRN.getText())  + 1;
+						btnR.setEnabled(true);
 						labelRN.setText("" + n);
 					}
 					
@@ -467,118 +473,116 @@ public class Juego extends JFrame {
 				button.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
-						if(estado.equals("Juego")){
-						
-						if(radar){
-							if(btnR.isEnabled()){
-								System.out.println("Llamada a radar 1");							
-								boolean hayBarcos = false;
-								hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar2.gridx, lugar2.gridy);
-								System.out.println("RADAR = " +hayBarcos);
-								if(hayBarcos){
-									System.out.println("Llamada a radar 2");
-									ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar2.gridx, lugar2.gridy);
-									lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0).getX() + ", " +barcosCerca.get(0).getY());
-									 int restantes = Integer.parseInt(labelRN.getText());
-									restantes = restantes - 1;
-									labelTN.setText(""+restantes);
-									if(restantes == 0){
-										btnR.setEnabled(false);
-										btnR.setBackground(Color.GRAY);
-										radar = false;
+					if(estado.equals("Juego")){
+						if(button.isEnabled()){
+							if(radar){
+								if(btnR.isEnabled()){
+									System.out.println("Llamada a radar 1");							
+									boolean hayBarcos = false;
+									hayBarcos = HundirFlota.getMiFlota().hayBarcosJugador(lugar2.gridx, lugar2.gridy);
+									System.out.println("RADAR = " +hayBarcos);
+									if(hayBarcos){
+										System.out.println("Llamada a radar 2");
+										ArrayList<Casilla> barcosCerca = HundirFlota.getMiFlota().radarJugador(lugar2.gridx, lugar2.gridy);
+										lblSeleccioneLasPosiciones.setText("Hay barcos en las siguientes posiciones: X, Y" + barcosCerca.get(0).getX() + ", " +barcosCerca.get(0).getY());
+										 int restantes = Integer.parseInt(labelRN.getText());
+										restantes = restantes - 1;
+										labelRN.setText(""+restantes);
+										if(restantes == 0){
+											btnR.setEnabled(false);
+											btnR.setBackground(Color.GRAY);
+											radar = false;
+										}
 									}
 								}
-							}
-						}else{
-							
-							if(btnR.isEnabled()){
-							
-							System.out.println("DISPARO EN: X= "+ lugar2.gridx + " Y= " + lugar2.gridy + " De tipo: " + tipoDisparo );
-							int restantes = 0;
-							//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
-							if(tipoDisparo.equals("MT")){
-								restantes = Integer.parseInt(labelTN.getText());
-								restantes = restantes - 1;
-								labelTN.setText(""+restantes);
-								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+							}else{
 								
-								if(restantes == 0){
-									btnMt.setEnabled(false);
-									btnMt.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
+								if(btnR.isEnabled()){
 								
-								//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
-							}else if(tipoDisparo.equals("MOE")){
-								restantes = Integer.parseInt(labelMOEN.getText());		
-								restantes = restantes - 1;
-								labelMOEN.setText(""+restantes);
-								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
-								if(restantes == 0){
-									btnMoe.setEnabled(false);
-									btnMoe.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								
-								for (int k = 0; k < 20; k++) {
-									JButton b = (JButton) panelPc.getComponents()[k];
-									System.out.print("ORIGINAL X= " + b.getX() + " Y= " + b.getY());
-									b.setBackground(Color.PINK);
-									conver(b.getX(), b.getY());
-								}					
-																								
-								//JButton b2 = (JButton) panelPc
-								//b2.setBackground(Color.PINK);
-								
-								//PINTO TODAS LAS CASILLAS DE FILA
-							}else if(tipoDisparo.equals("MNS")){
-								System.out.println("Entra en MNS");
-								restantes = Integer.parseInt(labelMNSN.getText());		
-								restantes = restantes - 1;
-								System.out.println("Los restantes es= " + restantes);
-								labelMNSN.setText(""+restantes);
-								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
-								if(restantes == 0){
-									btnMns.setEnabled(false);
-									btnMns.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								//PINTO TODAS LAS CASILLAS DE COLUMNA
-							}else if(tipoDisparo.equals("M")){
-								restantes = Integer.parseInt(labelMN.getText());		
-								restantes = restantes - 1;
-								labelMN.setText(""+restantes);
-								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
-								if(restantes == 0){
-									btnM.setEnabled(false);
-									btnM.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-							}else if(tipoDisparo.equals("B")){
-								restantes = Integer.parseInt(labelBN.getText());		
-								restantes = restantes - 1;
-								labelBN.setText(""+restantes);
-								ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
-								if(restantes == 0){
-									btnB.setEnabled(false);
-									btnB.setBackground(Color.GRAY);
-									tipoDisparo = "0";
-								}
-								
-								if(agua.size() == 0){
-									button.setEnabled(false);
-									button.setBackground(Color.BLUE);
-									System.out.println("AGUA");
+								System.out.println("DISPARO EN: X= "+ lugar2.gridx + " Y= " + lugar2.gridy + " De tipo: " + tipoDisparo );
+								int restantes = 0;
+								//HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+								if(tipoDisparo.equals("MT")){
+									restantes = Integer.parseInt(labelTN.getText());
+									restantes = restantes - 1;
+									labelTN.setText(""+restantes);
+									ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
 									
-								}else{
-									button.setEnabled(false);
-									button.setBackground(Color.GREEN);
-									nToques = nToques + 1;
-									System.out.println("No agua");
+									if(restantes == 0){
+										btnMt.setEnabled(false);
+										btnMt.setBackground(Color.GRAY);
+										tipoDisparo = "0";
+									}
+									
+									//PINTO TODAS LAS CASILLAS DE FILA Y COLUMNA
+								}else if(tipoDisparo.equals("MOE")){
+									restantes = Integer.parseInt(labelMOEN.getText());		
+									restantes = restantes - 1;
+									labelMOEN.setText(""+restantes);
+									ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+									if(restantes == 0){
+										btnMoe.setEnabled(false);
+										btnMoe.setBackground(Color.GRAY);
+										tipoDisparo = "0";
+									}								
+													
+																									
+									//JButton b2 = (JButton) panelPc
+									//b2.setBackground(Color.PINK);
+									
+									//PINTO TODAS LAS CASILLAS DE FILA
+								}else if(tipoDisparo.equals("MNS")){
+									System.out.println("Entra en MNS");
+									restantes = Integer.parseInt(labelMNSN.getText());		
+									restantes = restantes - 1;
+									System.out.println("Los restantes es= " + restantes);
+									labelMNSN.setText(""+restantes);
+									ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+									if(restantes == 0){
+										btnMns.setEnabled(false);
+										btnMns.setBackground(Color.GRAY);
+										tipoDisparo = "0";
+									}
+									//PINTO TODAS LAS CASILLAS DE COLUMNA
+								}else if(tipoDisparo.equals("M")){
+									restantes = Integer.parseInt(labelMN.getText());		
+									restantes = restantes - 1;
+									labelMN.setText(""+restantes);
+									ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+									if(restantes == 0){
+										btnM.setEnabled(false);
+										btnM.setBackground(Color.GRAY);
+										tipoDisparo = "0";
+									}
+								}else if(tipoDisparo.equals("B")){
+									restantes = Integer.parseInt(labelBN.getText());		
+									restantes = restantes - 1;
+									labelBN.setText(""+restantes);
+									ArrayList<Integer> agua = HundirFlota.getMiFlota().disparar(tipoDisparo, lugar2.gridx, lugar2.gridy);
+									if(restantes == 0){
+										btnB.setEnabled(false);
+										btnB.setBackground(Color.GRAY);
+										tipoDisparo = "0";
+									}
+									
+									if(agua.size() == 0){
+										button.setEnabled(false);
+										button.setBackground(Color.BLUE);
+										System.out.println("AGUA");
+										
+									}else{
+										button.setEnabled(false);
+										button.setBackground(Color.GREEN);
+										nToques = nToques + 1;
+										System.out.println("No agua");
+									}
 								}
-							}
+								}
+								dispararOrdenador();
+								//System.out.println("Ha disparado en:  " + HundirFlota.getMiFlota().disparaElOrdenador());
 							}
 						}
+						
 						
 					}
 				}
@@ -658,17 +662,47 @@ public class Juego extends JFrame {
 		
 	}
 	
-	private void conver(int x, int y){
-		if(x > 1){
-			x = x/44;
-		}else{
+	private void dispararOrdenador(){
+		ArrayList<Integer> donde = HundirFlota.getMiFlota().disparaElOrdenador();
+		System.out.println("TIPO DE MISIL= " + donde.size());
+		System.out.println("Ha disparado en:  " + donde);
+		ArrayList<Integer> donde2 = new ArrayList<Integer>();
+		for (int i = 0; i < donde.size(); i = i + 2) {
+			for (int k = 0; k < panelJug.getComponentCount(); k++) {
+				JButton b = (JButton) panelJug.getComponents()[k];
+				//System.out.print("ORIGINAL X= " + b.getX() + " Y= " + b.getY());
+				//b.setBackground(Color.PINK);
+				donde2 = conver(b.getX(), b.getY());
+				if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
+					System.out.println("La comparacion es X= " +donde.get(0) + " == " + donde2.get(0));
+					System.out.println("La comparacion es Y= " +donde.get(1) + " == " + donde2.get(1));
+					b.setBackground(Color.RED);
+				}
+			}	
+		}
+		
+		
+	}
+	
+	private ArrayList<Integer> conver(int x, int y){
+		
+		ArrayList<Integer> d =  new ArrayList<Integer>();
+		
+		if(x == 1){
 			x = 0;
+		}else if(x == 44){
+			x = 1;
+		}else{
+			x = (x - 3)/41;
 		}
 		if(y > 1){
 			y = y /26;
 		}
+		d.add(x);
+		d.add(y);
+		//System.out.println("-----DESPUES: X=" + x + "Y= " + y);
+		return d;
 		
-		System.out.println("-----DESPUES: X=" + x + "Y= " + y);
 	}
 	
 	private void resaltarPos(int i, int j) {

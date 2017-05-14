@@ -257,6 +257,7 @@ public class Jugador {
 	public String tipoDisparo(){
 		
 		int r=(int) (Math.random()*5+1);
+		System.out.println("EL RANDOM ES=" + r);
 		if(r==1){
 			return "ab";
 		}else if(r==2){
