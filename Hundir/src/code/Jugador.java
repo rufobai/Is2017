@@ -75,7 +75,10 @@ public class Jugador {
 		boolean asignado=false;
 		Casilla m;
 		ArrayList<Casilla> l=new ArrayList<Casilla>();
-		if(cont==0    ){
+		Barco b;
+		
+		
+		if(cont==0 ){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
 			anadirBarcoALista(new Barco(4, l));

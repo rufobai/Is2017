@@ -39,6 +39,7 @@ public class Barco {
 		
 	}
 	
+	
 	public boolean anadirPosicion(int x, int y){
 		boolean es=false;
 		Casilla c,c1,c2;
@@ -74,6 +75,19 @@ public class Barco {
 			}
 		}
 		return es;
+	}
+	public boolean comprobar(int x, int y){
+		boolean es=false;
+		
+		for (int i = 0; i < lista.size()-1; i++) {
+			if(x!=lista.get(i).getX()+1 || x!=lista.get(i).getX()-1){
+				
+			}
+		}
+		
+		
+		return es;
+		
 	}
 	
 	public boolean posible(int x, int y, Casilla c){

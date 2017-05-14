@@ -39,6 +39,7 @@ public class HundirFlota {
 	public boolean asignarBarcosJugador(int x, int y) {
 		boolean asignado=false;
 		
+		
 		asignado=listaJugadores.get(0).anadirBarcoJug(x, y);
 		
 		
@@ -125,7 +126,7 @@ public class HundirFlota {
 		
 		
 		ArrayList<Integer> a=new ArrayList<Integer>();
-		ArrayList<Casilla> c=listaJugadores.get(1).disparar(tipo, x, y);
+		ArrayList<Casilla> c=listaJugadores.get(1).dispararO(tipo, x, y);
 		Iterator<Casilla> itr=c.iterator();
 		Casilla casi;
 		
