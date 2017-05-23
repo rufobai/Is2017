@@ -25,6 +25,7 @@ public class Jugador {
 		listaBarcos=new ListaBarcos();
 		if(esOrdenador== true){
 			asignarBarcosOrdenador();
+			armamentoJug=new Armamento("a");
 		}
 		cont=0;
 		

@@ -6,7 +6,12 @@ import java.util.Iterator;
 
 public class Barco {
 	
-	public int longitud;
+	private int longitud;
+	public int getLongitud() {
+		return longitud;
+	}
+
+
 	private boolean escudo;
 	private String estado;
 	private int toques;

@@ -9,7 +9,7 @@ public class Armamento {
 	private int misilNS;	
 	private int misilOE;
 	private int misilAB;
-
+ 
 
 	public Armamento(){
 		radar=2;
@@ -18,6 +18,15 @@ public class Armamento {
 		misilAB=2;
 		misilNS=2;
 		misilOE=2;
+				
+	}
+	public Armamento(String a){
+		radar=1;
+		bombas=105;
+		misiles=1;
+		misilAB=1;
+		misilNS=1;
+		misilOE=1;
 				
 	}
 

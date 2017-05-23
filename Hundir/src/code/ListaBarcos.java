@@ -95,7 +95,7 @@ public class ListaBarcos {
 	public ArrayList<Integer> disparoMOE(int x, int y){
 		
 		ArrayList<Integer> lista= new ArrayList<Integer>();
-		for(int x1=0;x1<9;x1++){
+		for(int x1=0;x1<10;x1++){
 			lista.add(x1);
 			lista.add(y);
 		}
@@ -111,7 +111,7 @@ public class ListaBarcos {
 	}
 	public ArrayList<Integer> disparoMNS(int x, int y){
 		ArrayList<Integer> lista= new ArrayList<Integer>();
-		for(int y1=0;y1<9;y1++){
+		for(int y1=0;y1<10;y1++){
 			lista.add(x);
 			lista.add(y1);
 			

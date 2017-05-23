@@ -53,7 +53,8 @@ public class Juego extends JFrame {
 	private JLabel labelRN;
 	private boolean radar;
 	private String tipoDisparo;
-	private int nToques = 0;
+	private int nToquesJug = 0;
+	private int nToquesPC = 0;
 	private JPanel panelPc;
 
 	/**
@@ -76,6 +77,7 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 	public Juego() {
+		setResizable(false);
 		estado = "Inicio";
 		barcoToca = "Portaaviones";
 		barcosInsert = 20;
@@ -83,7 +85,7 @@ public class Juego extends JFrame {
 		tipoDisparo = "B";
 		setTitle("Hundir la Flota");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 439, 768);
+		setBounds(100, 100, 428, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -705,6 +707,7 @@ public class Juego extends JFrame {
 			}
 		}else{
 			System.out.println("ACIERTA");
+			nToquesJug = nToquesJug + donde.size()/2;
 			for (int i = 0; i < donde.size(); i = i + 2) {
 				System.out.println("COORDENADA: " + i);
 				for (int k = 0; k < panelPc.getComponentCount(); k++) {
@@ -757,7 +760,9 @@ public class Juego extends JFrame {
 				}	
 			}
 		}
-		
+		if(nToquesPC == 20){
+			lblSeleccioneLasPosiciones.setText("HAS GANADO LA PARTIDA");
+		}
 		
 		
 	}
@@ -773,18 +778,26 @@ public class Juego extends JFrame {
 				//b.setBackground(Color.PINK);
 				donde2 = conver(b.getX(), b.getY());
 				if(donde.get(i) == donde2.get(0) && donde.get(i+1) == donde2.get(1)){
+					if(donde.size() == 2 && (b.getBackground() == Color.RED || b.getBackground() == Color.BLUE)){
+						dispararOrdenador();
+					}else{
+						if(b.getBackground() == Color.ORANGE){
+							nToquesPC = nToquesPC + 1;
+							b.setBackground(Color.RED);
+						}else if(b.getBackground() != Color.RED){
+							b.setBackground(Color.BLUE);
+						}
+					}
 					//System.out.println("La comparacion es X= " +donde.get(0) + " == " + donde2.get(0));
 					//System.out.println("La comparacion es Y= " +donde.get(1) + " == " + donde2.get(1));
-					if(b.getBackground() == Color.ORANGE){
-						b.setBackground(Color.RED);
-					}else{
-						b.setBackground(Color.BLUE);
-					}
+					
 					
 				}
 			}	
 		}
-		
+		if(nToquesPC == 20){
+			lblSeleccioneLasPosiciones.setText("EL PC HA GANADO LA PARTIDA");
+		}
 		
 	}
 	

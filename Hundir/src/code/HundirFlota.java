@@ -171,7 +171,7 @@ public class HundirFlota {
 		ArrayList<Integer> l=new ArrayList<Integer>();
 		for(int i = 0; i < 10 ;i++){
 			
-			l.add(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).longitud);
+			l.add(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).getLongitud());
 			l.add(HundirFlota.getMiFlota().listaJugadores.get(1).listaBarcos.listaBarcos.get(i).lista.size());
 			
 		}
