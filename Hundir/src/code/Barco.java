@@ -201,6 +201,8 @@ public class Barco {
 				}else if(lista.get(i).getY()>=y && lista.get(i).getX()-4>=x){
 					System.out.println("aqui no");
 					es=true;
+				}else if(lista.get(i).getY()+4<=y && lista.get(i).getX()+2<=x || lista.get(i).getY()+4<=y && lista.get(i).getX()!=x ){
+					es=true;
 				}
 				
 			}
