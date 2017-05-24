@@ -666,6 +666,7 @@ public class Juego extends JFrame {
 				//System.out.print("ORIGINAL X= " + b.getX() + " Y= " + b.getY());
 				//b.setBackground(Color.PINK);
 				donde2 = conver(b.getX(), b.getY());
+				donde2.set(0, donde2.get(0) + 1);
 				if(tipo.equals("MNS")){
 					
 					if(x == donde2.get(0)){
@@ -704,6 +705,7 @@ public class Juego extends JFrame {
 						b.setEnabled(false);
 					}
 				}
+				System.out.println("Donde= " + donde2.get(0) + donde2.get(1));
 			}
 		}else{
 			System.out.println("ACIERTA");
