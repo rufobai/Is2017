@@ -85,19 +85,19 @@ public class Jugador {
 			anadirBarcoALista(new Barco(4, l));
 			cont=cont+1;
 			asignado=true;
-		}else if(cont==4|| cont==7){
+		}else if(cont==4  && comprobar(x, y)==true || cont==7  && comprobar(x, y)==true){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
 			anadirBarcoALista(new Barco(3, l));
 			cont=cont+1;
 			asignado=true;
-		}else if(cont==10 || cont==12 || cont==14){
+		}else if(cont==10 && comprobar(x, y)==true || cont==12  && comprobar(x, y)==true || cont==14 && comprobar(x, y)==true){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
 			anadirBarcoALista(new Barco(2, l));
 			cont=cont+1;
 			asignado=true;
-		}else if( cont==16 || cont==17 || cont ==18 || cont==19){
+		}else if( cont==16  && comprobar(x, y)==true || cont==17  && comprobar(x, y)==true || cont ==18  && comprobar(x, y)==true || cont==19 && comprobar(x, y)==true){
 			m=t1.asignarBarco(x, y);
 			l.add(m);
 			anadirBarcoALista(new Barco(1, l));
@@ -110,6 +110,16 @@ public class Jugador {
 			cont=cont+1;
 		}
 		return asignado;
+	}
+	
+	private boolean comprobar(int x, int y){
+		boolean posible=false;
+		
+		
+			posible=listaBarcos.comprobar(x,y);
+	
+		
+		return posible;
 	}
 	
 	private void asignarBarcosOrdenador(){

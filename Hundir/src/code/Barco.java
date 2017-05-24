@@ -183,5 +183,63 @@ public class Barco {
 		}
 		
 	}
+	
+	public boolean sepuede(int x, int y){
+		boolean es=false;
+		
+			for (int i = 0; i < lista.size()-1; i++) {
+				if(lista.get(i).getX()==x && lista.get(lista.size()-1).getY()+4<=y){
+					System.out.println("nose");
+					es=true;
+				}else if(lista.get(i).getX()==x && lista.get(1).getY()-4>=y){
+					System.out.println("nose2");
+					es=true;
+				}else if(lista.get(i).getY()<=y && lista.get(i).getX()+4<=x){
+					System.out.println("aqui si");
+					
+					es=true;
+				}else if(lista.get(i).getY()>=y && lista.get(i).getX()-4>=x){
+					System.out.println("aqui no");
+					es=true;
+				}
+				
+			}
+		return es;
+	}
+	
+	public boolean sepuede2(int x, int y){
+		boolean es=false;
+		
+			for (int i = 0; i < lista.size()-1; i++) {
+				if(lista.get(i).getX()==x && lista.get(i).getY()+3<=y){
+					es=true;
+				}else if(lista.get(i).getX()==x && lista.get(i).getY()-3>=y){
+					es=true;
+				}else if(lista.get(i).getY()==y && lista.get(i).getX()+3<=x){
+					es=true;
+				}else if(lista.get(i).getY()==y && lista.get(i).getX()-3>=x){
+					es=true;
+				}
+			}
+		return es;
+	}
+	
+	public boolean sepuede3(int x, int y){
+		boolean es=false;
+		
+			for (int i = 0; i < lista.size()-1; i++) {
+				if(lista.get(i).getX()==x && lista.get(i).getY()+2<=y){
+					es=true;
+				}else if(lista.get(i).getX()==x && lista.get(i).getY()-2>=y){
+					es=true;
+				}else if(lista.get(i).getY()==y && lista.get(i).getX()+2<=x){
+					es=true;
+				}else if(lista.get(i).getY()==y && lista.get(i).getX()-2>=x){
+					es=true;
+				}
+			}
+		return es;
+	}
+	
 
 }

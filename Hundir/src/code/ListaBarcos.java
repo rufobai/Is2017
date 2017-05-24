@@ -153,4 +153,32 @@ public class ListaBarcos {
 			}
 		}
 	}
+	
+	public boolean comprobar(int x, int y){
+		boolean posible=false;
+		boolean comprueba=false;
+		Iterator<Barco> itr=listaBarcos.iterator();
+		Barco b=null;
+		while(itr.hasNext()){
+			b=itr.next();
+			if(listaBarcos.size()==1 || listaBarcos.size()==2 ){
+				posible=b.sepuede(x, y);
+			}else if(listaBarcos.size()==3 || listaBarcos.size()==4 || listaBarcos.size()==5){
+				posible=b.sepuede2(x, y);
+			}else {
+				posible=b.sepuede3(x, y);
+			}
+			if(posible==true){
+				comprueba=true;
+			}
+			
+			
+		}
+		if(posible!=comprueba){
+			return comprueba;
+		}else {
+			return posible;
+		}
+		//return comprueba;
+	}
 }
